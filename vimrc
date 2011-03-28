@@ -59,6 +59,7 @@ au FileType mail set tw=65
 map <F7> :set complete+=k<CR>
 map <S-F7> :set complete=-k<CR>
 
-" Experiments
+let g:jekyll_path = "~/mottram"
 
+" If it's in ~/notes, it's Markdown
 autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown
