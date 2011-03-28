@@ -19,3 +19,6 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git@github.com:mottram/snipmate.vim.git
+[submodule "bundle/jekyll"]
+	path = bundle/jekyll
+	url = git@github.com:mottram/jekyll.vim.mottram.git
