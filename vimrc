@@ -36,10 +36,8 @@ set expandtab
 set pastetoggle=<F6>
 set dictionary=/usr/share/dict/words
 set clipboard=unnamed
-
 syntax on
 filetype indent plugin on
-
 imap jj <Esc>
 map Y y$
 map ,t :tabnew<CR>
@@ -60,10 +58,7 @@ au FileType mail set tw=65
 map <F7> :set complete+=k<CR>
 map <S-F7> :set complete=-k<CR>
 map <F8> :YRShow<CR>
-
 let g:jekyll_path = "~/mottram"
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
-
-" If it's in ~/notes, it's Markdown
 autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown
