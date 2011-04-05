@@ -22,6 +22,3 @@
 [submodule "bundle/jekyll"]
 	path = bundle/jekyll
 	url = git@github.com:mottram/jekyll.vim.mottram.git
-[submodule "bundle/solarized"]
-	path = bundle/solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
