@@ -1,6 +1,12 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-colorscheme solarized
+set term=$TERM
+if &term == "linux"
+    colorscheme miro8
+else
+    set t_Co=256
+    colorscheme macvim
+endif
 set hidden
 set number
 set autoindent
