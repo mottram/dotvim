@@ -1,6 +1,12 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-colorscheme macvim
+set term=$TERM
+if &term == "linux"
+    colorscheme miro8
+else
+    set t_Co=256
+    colorscheme macvim
+endif
 set hidden
 set number
 set autoindent
@@ -12,7 +18,6 @@ set hlsearch
 set ignorecase
 set smartcase
 set laststatus=2
-set statusline=%-(%F%m%r%h%w%)\ %{&ff}/%Y/%{&encoding}\ %=%(@\%03.3b\ %Ll\ %l,%v\ (%p%%)%) 
 set mouse=a
 set showcmd
 set ruler
@@ -62,3 +67,15 @@ let g:jekyll_path = "~/mottram"
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
 autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown
+
+if has('statusline')
+  set statusline=%<%f\ 
+  set statusline+=%w%h%m%r 
+  set statusline+=%{fugitive#statusline()}
+  set statusline+=\ [%{&ff}/%Y]  
+  set statusline+=\ [%{getcwd()}]
+  set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+endif
+
+" Old statusline
+" set statusline=%-(%F%m%r%h%w%)\ %{&ff}/%Y/%{&encoding}\ %=%(@\%03.3b\ %Ll\ %l,%v\ (%p%%)%) 
