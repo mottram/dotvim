@@ -22,3 +22,6 @@
 [submodule "bundle/jekyll"]
 	path = bundle/jekyll
 	url = git@github.com:mottram/jekyll.vim.mottram.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
