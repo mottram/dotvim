@@ -38,7 +38,6 @@ set shiftwidth=4
 set softtabstop=4
 set smarttab
 set expandtab
-set pastetoggle=<F6>
 set dictionary=/usr/share/dict/words
 set clipboard=unnamed
 syntax on
@@ -54,19 +53,23 @@ map ,jc :JekyllCommit<CR>
 map ,f :FufFile<CR>
 map ,b :FufBuffer<CR>
 map <F2> :NERDTreeToggle<CR>
-map <F3> :r !pbpaste<CR>
+"map <F3> :r !pbpaste<CR>
 map <F4> :setlocal spell spelllang=en_gb<CR>
 map <F5> :set nospell<CR>
-au BufWinLeave *.html,*.css mkview	
-au BufWinEnter *.html,*.css silent loadview	
-au FileType mail set tw=65
+set pastetoggle=<F6>
 map <F7> :set complete+=k<CR>
 map <S-F7> :set complete=-k<CR>
 map <F8> :YRShow<CR>
+nnoremap <F3> :GundoToggle<CR>
+
 let g:jekyll_path = "~/mottram"
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
+
 autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown
+au BufWinLeave *.html,*.css mkview	
+au BufWinEnter *.html,*.css silent loadview	
+au FileType mail set tw=65
 
 if has('statusline')
   set statusline=%<%f\ 
