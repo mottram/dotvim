@@ -15,7 +15,7 @@ Setup:
 
 Note to self:
 
-cd ~/.vim
-git submodule update --init
-mkdir backup temp view
-ln -s vimrc ~/.vimrc
+* cd ~/.vim
+* git submodule update --init
+* mkdir backup temp view
+* ln -s vimrc ~/.vimrc
