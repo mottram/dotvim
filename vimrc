@@ -42,16 +42,19 @@ set dictionary=/usr/share/dict/words
 set clipboard=unnamed
 syntax on
 filetype indent plugin on
+let mapleader=","
+let gmapleader=","
 imap jj <Esc>
 map Y y$
-map ,t :tabnew<CR>
-map ,n :tabnext<CR>	
-map ,jl :JekyllLink<CR> 
-map ,jp :JekyllPost<CR> 
-map ,ji :JekyllPic<CR> 
-map ,jc :JekyllCommit<CR>
-map ,f :FufFile<CR>
-map ,b :FufBuffer<CR>
+map <leader>t :tabnew<CR>
+map <leader>n :tabnext<CR>	
+map <leader>jl :JekyllLink<CR> 
+map <leader>jp :JekyllPost<CR> 
+map <leader>ji :JekyllPic<CR> 
+map <leader>jc :JekyllCommit<CR>
+map <leader>f :FufFile<CR>
+map <leader>b :FufBuffer<CR>
+nmap <leader>w :w!<cr>
 map <F2> :NERDTreeToggle<CR>
 "map <F3> :r !pbpaste<CR>
 map <F4> :setlocal spell spelllang=en_gb<CR>
@@ -61,7 +64,6 @@ map <F7> :set complete+=k<CR>
 map <S-F7> :set complete=-k<CR>
 map <F8> :YRShow<CR>
 nnoremap <F3> :GundoToggle<CR>
-
 let g:jekyll_path = "~/mottram"
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
