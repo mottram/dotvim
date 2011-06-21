@@ -39,5 +39,5 @@ This is my Vim configuration
 * `git clone git@github.com:mottram/dotvim.git ~/.vim`
 * `cd ~/.vim`
 * `git submodule update --init`
-* `mkdir backup temp view`
+* `mkdir backup temp view ~/.yr`
 * `ln -s vimrc ~/.vimrc`

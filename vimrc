@@ -7,6 +7,7 @@ else
     set t_Co=256
     colorscheme macvim
 endif
+set nocompatible
 set hidden
 set number
 set autoindent
@@ -40,6 +41,7 @@ set smarttab
 set expandtab
 set dictionary=/usr/share/dict/words
 set clipboard=unnamed
+set ttyfast
 syntax on
 filetype indent plugin on
 let mapleader=","
@@ -81,6 +83,3 @@ if has('statusline')
   set statusline+=\ [%{getcwd()}]
   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 endif
-
-" Old statusline
-" set statusline=%-(%F%m%r%h%w%)\ %{&ff}/%Y/%{&encoding}\ %=%(@\%03.3b\ %Ll\ %l,%v\ (%p%%)%) 
