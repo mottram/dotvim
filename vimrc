@@ -1,23 +1,23 @@
-call pathogen#runtime_append_all_bundles()
+call pathogen#runtime_append_all_bundles()                      " Pathogen manages plugins
 call pathogen#helptags()
-set term=$TERM
-if &term == "linux"
+set term=$TERM                                                  
+if &term == "linux"                                             " If I'm on a TTY, use miro8
     colorscheme miro8
 else
-    set t_Co=256
+    set t_Co=256                                                " If I have 256 colours, use macvim
     colorscheme macvim
 endif
-set nocompatible
-set hidden
-set number
-set autoindent
-set smartindent
-set confirm
-set history=1000
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
+set nocompatible                                                " No need for vi compatability
+set hidden 
+set number                                                     
+set autoindent                                                  " Autoindent...
+set smartindent                                                 " ...smartly
+set confirm                                                     " Confirmation required
+set history=1000                                                " Remember plenty of commands
+set incsearch                                                   " Search incrementally
+set hlsearch                                                    " Highlight search terms
+set ignorecase                                                  " Case insensitive search...
+set smartcase                                                   " ...for lower case seach terms
 set laststatus=2
 set mouse=a
 set showcmd
@@ -27,55 +27,53 @@ set writebackup
 set backupdir=~/.vim/backup
 set directory=~/.vim/temp
 set wildmenu
-set wildignore+=.DS_Store
-set nomodeline
+set wildignore+=.DS_Store                                       " Never show me DS_Store files
+set nomodeline                                                  " Security
 set tabpagemax=20
 set showtabline=2
 set showmatch	
 set ffs=unix,mac
-set guifont=Monaco:h12
+set guifont=Monaco:h12                                          " 12pt Monaco in MacVim
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set smarttab
 set expandtab
-set dictionary=/usr/share/dict/words
+set dictionary=/usr/share/dict/words                            " Spelling dictionary
 set clipboard=unnamed
-set ttyfast
-syntax on
-filetype indent plugin on
-let mapleader=","
+set ttyfast                                                     " Improves redrawing in xterm et al
+syntax on                                                       " Syntax highlighting
+filetype indent plugin on                                       " 
+let mapleader=","                                               " Use , as Leader
 let gmapleader=","
-imap jj <Esc>
-map Y y$
-map <leader>t :tabnew<CR>
-map <leader>n :tabnext<CR>	
-map <leader>jl :JekyllLink<CR> 
+map Y y$                                                        " Yank to the end of the line w/ Y
+map <leader>t :tabnew<CR>                                       " New tab w/ ,t
+map <leader>n :tabnext<CR>	                                    " Next tab w/ ,n
+map <leader>jl :JekyllLink<CR>                                  " Jekyll plugin stuff
 map <leader>jp :JekyllPost<CR> 
 map <leader>ji :JekyllPic<CR> 
-map <leader>jc :JekyllCommit<CR>
-map <leader>f :FufFile<CR>
-map <leader>b :FufBuffer<CR>
+map <leader>jc :JekyllCommit<CR>        
+map <leader>f :FufFile<CR>                                      " Find files with ,f
 nmap <leader>w :w!<cr>
-map <F2> :NERDTreeToggle<CR>
+map <F2> :NERDTreeToggle<CR>                                    " Show the directory tree with <F2>
 "map <F3> :r !pbpaste<CR>
-map <F4> :setlocal spell spelllang=en_gb<CR>
+map <F4> :setlocal spell spelllang=en_gb<CR>                    " Turn on spellcheck with <F4>
 map <F5> :set nospell<CR>
 set pastetoggle=<F6>
 map <F7> :set complete+=k<CR>
-map <S-F7> :set complete=-k<CR>
-map <F8> :YRShow<CR>
-nnoremap <F3> :GundoToggle<CR>
-let g:jekyll_path = "~/mottram"
+map <S-F7> :set complete=-k<CR>                                 
+map <F8> :YRShow<CR>                                            " Show the YankRing w/ <F8>
+nnoremap <F3> :GundoToggle<CR>                                  " Show the undo tree w/ <F3>
+nnoremap ; :
+let g:jekyll_path = "~/mottram"                                 " Tell the Jekyll plugin where my blog is
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
-
 autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown
 au BufWinLeave *.html,*.css mkview	
 au BufWinEnter *.html,*.css silent loadview	
-au FileType mail set tw=65
-
-if has('statusline')
+au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
+au FocusLost * :wa                                              " Saves file when vim loses focus
+if has('statusline')                                            " Status line with git repo info
   set statusline=%<%f\ 
   set statusline+=%w%h%m%r 
   set statusline+=%{fugitive#statusline()}
