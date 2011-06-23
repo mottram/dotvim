@@ -1,39 +1,52 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
-	url = https://github.com/tpope/vim-markdown.git
+    url = https://github.com/tpope/vim-markdown.git
+    ignore = dirty
 [submodule "bundle/fuzzyfinder"]
 	path = bundle/fuzzyfinder
 	url = https://github.com/vim-scripts/FuzzyFinder.git
+    ignore = dirty
 [submodule "bundle/l9"]
 	path = bundle/l9
 	url = https://github.com/vim-scripts/L9.git
+    ignore = dirty
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+    ignore = dirty
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+    ignore = dirty
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git@github.com:mottram/snipmate.vim.git
+    ignore = dirty
 [submodule "bundle/yankring"]
 	path = bundle/yankring
 	url = https://github.com/vim-scripts/YankRing.vim.git
+    ignore = dirty
 [submodule "bundle/jekyll"]
 	path = bundle/jekyll
 	url = git@github.com:mottram/jekyll.vim.mottram.git
+    ignore = dirty
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+    ignore = dirty
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
+    ignore = dirty
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+    ignore = dirty
 [submodule "bundle/vimoutliner"]
 	path = bundle/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
+    ignore = dirty
 [submodule "bundle/hammer"]
 	path = bundle/hammer
 	url = https://github.com/robgleeson/hammer.vim.git
+    ignore = dirty
