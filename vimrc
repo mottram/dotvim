@@ -1,3 +1,6 @@
+" Jack Mottram's ~/.vimrc
+" For more details see:
+" https://github.com/mottram/dotvim
 call pathogen#runtime_append_all_bundles()                      " Pathogen manages plugins
 call pathogen#helptags()
 set term=$TERM                                                  

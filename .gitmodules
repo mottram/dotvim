@@ -46,7 +46,3 @@
 	path = bundle/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
     ignore = dirty
-[submodule "bundle/hammer"]
-	path = bundle/hammer
-	url = https://github.com/robgleeson/hammer.vim.git
-    ignore = dirty
