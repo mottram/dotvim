@@ -7,6 +7,9 @@ else
     set t_Co=256                                                " If I have 256 colours, use macvim
     colorscheme macvim
 endif
+if has("gui_running")                                           " No hideous toolbar in MacVim
+    set guioptions=-t
+endif
 set nocompatible                                                " No need for vi compatability
 set hidden 
 set number                                                     
