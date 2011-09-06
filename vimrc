@@ -71,7 +71,7 @@ nnoremap ; :
 let g:jekyll_path = "~/mottram"                                 " Tell the Jekyll plugin where my blog is
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
-autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown
+autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown      " All files in ~/notes are Markdown
 au BufWinLeave *.html,*.css mkview	
 au BufWinEnter *.html,*.css silent loadview	
 au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
