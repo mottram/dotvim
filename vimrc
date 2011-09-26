@@ -53,8 +53,7 @@ filetype indent plugin on                                       "
 let mapleader=","                                               " Use , as Leader
 let gmapleader=","
 map Y y$                                                        " Yank to the end of the line w/ Y
-map <leader>t :tabnew<CR>                                       " New tab w/ ,t
-map <leader>n :tabnext<CR>	                                    " Next tab w/ ,n
+map <leader>nt :tabnew<CR>                                      " New tab w/ ,nt
 map <leader>jl :JekyllLink<CR>                                  " Jekyll plugin stuff
 map <leader>jp :JekyllPost<CR> 
 map <leader>ji :JekyllPic<CR> 
