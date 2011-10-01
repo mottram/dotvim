@@ -5,7 +5,6 @@ This is my Vim configuration
 * [Fugitive](https://github.com/tpope/vim-fugitive)
 * [Fuzzyfinder](https://github.com/vim-scripts/FuzzyFinder)
 * [Gundo](https://github.com/sjl/gundo.vim)
-* [Hammer](https://github.com/robgleeson/hammer.vim) (NB: requires Ruby support)
 * [Jekyll](https://github.com/mottram/jekyll.vim.mottram) (My fork of an old version of csetxon's [original](https://github.com/csexton/jekyll.vim)
 * [l9](https://github.com/vim-scripts/L9)
 * [Markdown](https://github.com/tpope/vim-markdown)

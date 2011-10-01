@@ -1,3 +1,6 @@
+" Jack Mottram's ~/.vimrc
+" For more details see:
+" https://github.com/mottram/dotvim
 call pathogen#runtime_append_all_bundles()                      " Pathogen manages plugins
 call pathogen#helptags()
 set term=$TERM                                                  
@@ -50,8 +53,7 @@ filetype indent plugin on                                       "
 let mapleader=","                                               " Use , as Leader
 let gmapleader=","
 map Y y$                                                        " Yank to the end of the line w/ Y
-map <leader>t :tabnew<CR>                                       " New tab w/ ,t
-map <leader>n :tabnext<CR>	                                    " Next tab w/ ,n
+map <leader>nt :tabnew<CR>                                      " New tab w/ ,nt
 map <leader>jl :JekyllLink<CR>                                  " Jekyll plugin stuff
 map <leader>jp :JekyllPost<CR> 
 map <leader>ji :JekyllPic<CR> 
@@ -71,7 +73,7 @@ nnoremap ; :
 let g:jekyll_path = "~/mottram"                                 " Tell the Jekyll plugin where my blog is
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
-autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown
+autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown      " All files in ~/notes are Markdown
 au BufWinLeave *.html,*.css mkview	
 au BufWinEnter *.html,*.css silent loadview	
 au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
