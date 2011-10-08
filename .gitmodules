@@ -46,7 +46,3 @@
 	path = bundle/command-t
     url = https://github.com/wincent/Command-T.git
     ignore = dirty
-[submodule "bundle/vimroom"]
-	path = bundle/vimroom
-    url = https://github.com/mikewest/vimroom.git
-    ignore = dirty
