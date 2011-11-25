@@ -42,7 +42,3 @@
 	path = bundle/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
     ignore = dirty
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-    url = https://github.com/wincent/Command-T.git
-    ignore = dirty

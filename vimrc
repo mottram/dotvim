@@ -58,7 +58,7 @@ map <leader>jl :JekyllLink<CR>                                  " Jekyll plugin 
 map <leader>jp :JekyllPost<CR> 
 map <leader>ji :JekyllPic<CR> 
 map <leader>jc :JekyllCommit<CR>        
-map <leader>f :FufFile<CR>                                      " Find files with ,f
+"map <leader>f :FufFile<CR>                                      " Find files with ,f
 nmap <leader>w :w!<cr>
 map <F2> :NERDTreeToggle<CR>                                    " Show the directory tree with <F2>
 "map <F3> :r !pbpaste<CR>
