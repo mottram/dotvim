@@ -42,6 +42,6 @@
 	path = bundle/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
     ignore = dirty
-[submodule "bundle/solarized"]
-	path = bundle/solarized
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
