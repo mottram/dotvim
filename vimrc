@@ -8,7 +8,9 @@ if &term == "linux"                                             " If I'm on a TT
     colorscheme miro8
 else
     set t_Co=256                                                " If I have 256 colours, use macvim
-    colorscheme macvim
+    set background=dark
+    colorscheme solarized
+   "colorscheme macvim
 endif
 if has("gui_running")                                           " No hideous toolbar in MacVim
     set guioptions=-t
