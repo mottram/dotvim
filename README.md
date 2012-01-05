@@ -10,6 +10,7 @@ This is my Vim configuration
 * [Markdown](https://github.com/tpope/vim-markdown)
 * [NERDCommenter](https://github.com/scrooloose/nerdcommenter)
 * [NERDTree](https://github.com/scrooloose/nerdtree)
+* [NERDTree](https://github.com/jistr/vim-nerdtree-tabs)
 * [Pathogen](https://github.com/tpope/vim-pathogen)
 * [Snipmate](git@github.com:mottram/snipmate.vim.git) (link goes to my fork)
 * [Supertab](https://github.com/scrooloose/nerdtree)

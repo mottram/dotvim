@@ -62,7 +62,7 @@ map <leader>ji :JekyllPic<CR>
 map <leader>jc :JekyllCommit<CR>        
 "map <leader>f :FufFile<CR>                                      " Find files with ,f
 nmap <leader>w :w!<cr>
-map <F2> :NERDTreeToggle<CR>                                    " Show the directory tree with <F2>
+map <F2> :NERDTreeTabsToggle<CR>                                    " Show the directory tree with <F2>
 "map <F3> :r !pbpaste<CR>
 map <F4> :setlocal spell spelllang=en_gb<CR>                    " Turn on spellcheck with <F4>
 map <F5> :set nospell<CR>
