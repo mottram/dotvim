@@ -52,4 +52,5 @@
     ignore = dirty
 [submodule "bundle/tabular"]
 	path = bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
+    url = https://github.com/godlygeek/tabular.git
+    ignore = dirty
