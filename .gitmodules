@@ -50,3 +50,6 @@
 	path = bundle/vim-nerdtree-tabs
     url = https://github.com/jistr/vim-nerdtree-tabs.git
     ignore = dirty
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
