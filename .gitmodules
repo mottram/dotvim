@@ -1,55 +1,56 @@
 [submodule "bundle/markdown"]
-	path = bundle/markdown
-    url = https://github.com/tpope/vim-markdown.git
+	path   = bundle/markdown
+    url    = https://github.com/tpope/vim-markdown.git
     ignore = dirty
 [submodule "bundle/l9"]
-	path = bundle/l9
-	url = https://github.com/vim-scripts/L9.git
+	path   = bundle/l9
+	url    = https://github.com/vim-scripts/L9.git
     ignore = dirty
 [submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+	path   = bundle/nerdtree
+	url    = https://github.com/scrooloose/nerdtree.git
     ignore = dirty
 [submodule "bundle/supertab"]
-	path = bundle/supertab
-	url = https://github.com/ervandew/supertab.git
+	path   = bundle/supertab
+	url    = https://github.com/ervandew/supertab.git
     ignore = dirty
 [submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = git@github.com:mottram/snipmate.vim.git
+	path   = bundle/snipmate
+	url    = git@github.com:mottram/snipmate.vim.git
     ignore = dirty
 [submodule "bundle/yankring"]
-	path = bundle/yankring
-	url = https://github.com/vim-scripts/YankRing.vim.git
+	path   = bundle/yankring
+	url    = https://github.com/vim-scripts/YankRing.vim.git
     ignore = dirty
 [submodule "bundle/jekyll"]
-	path = bundle/jekyll
-	url = git@github.com:mottram/jekyll.vim.mottram.git
+	path   = bundle/jekyll
+	url    = git@github.com:mottram/jekyll.vim.mottram.git
     ignore = dirty
 [submodule "bundle/fugitive"]
-	path = bundle/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
+	path   = bundle/fugitive
+	url    = https://github.com/tpope/vim-fugitive.git
     ignore = dirty
 [submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = http://github.com/sjl/gundo.vim.git
+	path   = bundle/gundo
+	url    = http://github.com/sjl/gundo.vim.git
     ignore = dirty
 [submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
+	path   = bundle/nerdcommenter
+	url    = https://github.com/scrooloose/nerdcommenter.git
     ignore = dirty
 [submodule "bundle/vimoutliner"]
-	path = bundle/vimoutliner
-	url = https://github.com/vimoutliner/vimoutliner.git
+	path   = bundle/vimoutliner
+	url    = https://github.com/vimoutliner/vimoutliner.git
     ignore = dirty
 [submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
-    url = https://github.com/altercation/vim-colors-solarized.git
+	path   = bundle/vim-colors-solarized
+    url    = https://github.com/altercation/vim-colors-solarized.git
     ignore = dirty
 [submodule "bundle/vim-nerdtree-tabs"]
-	path = bundle/vim-nerdtree-tabs
-    url = https://github.com/jistr/vim-nerdtree-tabs.git
+	path   = bundle/vim-nerdtree-tabs
+    url    = https://github.com/jistr/vim-nerdtree-tabs.git
     ignore = dirty
 [submodule "bundle/tabular"]
-	path = bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
+	path   = bundle/tabular
+    url    = https://github.com/godlygeek/tabular.git
+    ignore = dirty
