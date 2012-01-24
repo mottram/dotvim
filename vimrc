@@ -30,10 +30,12 @@ set laststatus=2
 set mouse=a
 set showcmd
 set ruler
-set nobackup
+set nobackup                                                    " No ~ backup files
 set writebackup
 set backupdir=~/.vim/backup
 set directory=~/.vim/temp
+set undodir=~/.vim/undo                                         " Keep undo history
+set undofile
 set wildmenu
 set wildignore+=.DS_Store                                       " Never show me DS_Store files
 set nomodeline                                                  " Security
