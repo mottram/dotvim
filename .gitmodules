@@ -54,3 +54,6 @@
 	path   = bundle/tabular
     url    = https://github.com/godlygeek/tabular.git
     ignore = dirty
+[submodule "bundle/twitvim"]
+	path = bundle/twitvim
+	url = https://github.com/vim-scripts/TwitVim.git
