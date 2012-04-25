@@ -43,7 +43,7 @@ set tabpagemax=20
 set showtabline=2
 set showmatch	
 set ffs=unix,mac
-set guifont=Monaco:h12                                          " 12pt Monaco in MacVim
+set guifont=Monaco:h10                                          " 10pt Monaco in MacVim
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
