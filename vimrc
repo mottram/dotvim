@@ -43,7 +43,7 @@ set tabpagemax=20
 set showtabline=2
 set showmatch	
 set ffs=unix,mac
-set guifont=Monaco:h12                                          " 12pt Monaco in MacVim
+set guifont=Monaco:h10                                          " 10pt Monaco in MacVim
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -82,8 +82,8 @@ au BufWinLeave *.html,*.css mkview
 au BufWinEnter *.html,*.css silent loadview	
 au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
 au FocusLost * :wa                                              " Saves file when vim loses focus
-let html_use_css = 1                                            " Tell TOhtml to use CSS and XHTML
-let use_xhtml = 1                                               
+"let html_use_css = 1                                            " Tell TOhtml to use CSS and XHTML
+"let use_xhtml = 1                                               
 if has('statusline')                                            " Status line with git repo info
   set statusline=%<%f\ 
   set statusline+=%w%h%m%r 
@@ -92,7 +92,3 @@ if has('statusline')                                            " Status line wi
   set statusline+=\ [%{getcwd()}]
   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 endif
-
-let twitvim_enable_perl = 1                                     " Twitter stuff
-let twitvim_browser_cmd = 'chromium'
-let twitvim_show_header = 0
