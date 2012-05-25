@@ -34,6 +34,11 @@ This is my Vim configuration
 * `git submodule foreach git pull`
 * `git commit -a -m "Updated plugins"`
 
+#### Removing plugins
+
+* Remove references to submodule in .gitmodules, .git/config
+* `git rm --cached bundle/bundle-dir
+
 #### Installing on a new machine
 
 * `git clone git@github.com:mottram/dotvim.git ~/.vim`
