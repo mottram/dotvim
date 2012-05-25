@@ -82,6 +82,8 @@ au BufWinLeave *.html,*.css mkview
 au BufWinEnter *.html,*.css silent loadview	
 au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
 au FocusLost * :wa                                              " Saves file when vim loses focus
+let html_use_css = 1                                            " Tell TOhtml to use CSS and XHTML
+let use_xhtml = 1                                               
 if has('statusline')                                            " Status line with git repo info
   set statusline=%<%f\ 
   set statusline+=%w%h%m%r 
