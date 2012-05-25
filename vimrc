@@ -90,3 +90,7 @@ if has('statusline')                                            " Status line wi
   set statusline+=\ [%{getcwd()}]
   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 endif
+
+let twitvim_enable_perl = 1                                     " Twitter stuff
+let twitvim_browser_cmd = 'chromium'
+let twitvim_show_header = 0

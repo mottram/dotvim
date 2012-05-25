@@ -2,7 +2,6 @@ This is my Vim configuration
 
 ### Installed plugins:
 
-* [Command-T](https://github.com/wincent/Command-T)
 * [Fugitive](https://github.com/tpope/vim-fugitive)
 * [Gundo](https://github.com/sjl/gundo.vim)
 * [Jekyll](https://github.com/mottram/jekyll.vim.mottram) (My fork of an old version of csetxon's [original](https://github.com/csexton/jekyll.vim)
