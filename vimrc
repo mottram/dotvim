@@ -93,10 +93,15 @@ if has('statusline')                                            " Status line wi
   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 endif
 
-" trying formd
+" formd
 nmap <leader>fr :%! ~/bin/formd -r<CR>
 nmap <leader>fi :%! ~/bin/formd -i<CR>
 
 " Octopress stuff
 autocmd VimLeavePre $HOME/Weblog/source/_posts/*.markdown set shell=/bin/sh
 autocmd VimLeave $HOME/Weblog/source/_posts/*.markdown !cd ~/Weblog;rake generate;open http://weblog.dev
+
+if hostname() == 'mbp'
+    let g:Powerline_colorscheme="skwp"
+    let g:Powerline_symbols = 'fancy' 
+endi"f
