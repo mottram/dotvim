@@ -74,14 +74,14 @@ map <S-F7> :set complete=-k<CR>
 map <F8> :YRShow<CR>                                            " Show the YankRing w/ <F8>
 nnoremap <F3> :GundoToggle<CR>                                  " Show the undo tree w/ <F3>
 nnoremap ; :
-let g:jekyll_path = "~/mottram"                                 " Tell the Jekyll plugin where my blog is
+"let g:jekyll_path = "~/mottram"                                 " Tell the Jekyll plugin where my blog is
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
 autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown      " All files in ~/notes are Markdown
 au BufWinLeave *.html,*.css mkview	
 au BufWinEnter *.html,*.css silent loadview	
 au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
-au FocusLost * :wa                                              " Saves file when vim loses focus
+"au FocusLost * :wa                                              " Saves file when vim loses focus
 "let html_use_css = 1                                            " Tell TOhtml to use CSS and XHTML
 "let use_xhtml = 1                                               
 if has('statusline')                                            " Status line with git repo info
@@ -92,3 +92,11 @@ if has('statusline')                                            " Status line wi
   set statusline+=\ [%{getcwd()}]
   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 endif
+
+" trying formd
+nmap <leader>fr :%! ~/bin/formd -r<CR>
+nmap <leader>fi :%! ~/bin/formd -i<CR>
+
+" Octopress stuff
+autocmd VimLeavePre $HOME/Weblog/source/_posts/*.markdown set shell=/bin/sh
+autocmd VimLeave $HOME/Weblog/source/_posts/*.markdown !cd ~/Weblog;rake generate;open http://weblog.dev
