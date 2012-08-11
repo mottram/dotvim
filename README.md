@@ -26,7 +26,7 @@ This is my Vim configuration
 
 * `git submodule add https://git.repo.of.plugin bundle/pluginname`
 * `git commit -a -m "Added plugin"`
-* On other machines after pull: `git submodule update bundle/pluginname`
+* On other machines after pull: `git submodule update --init bundle/pluginname`
 
 #### Updating plugins
 
