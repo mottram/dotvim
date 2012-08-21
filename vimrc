@@ -99,7 +99,7 @@ nmap <leader>fi :%! ~/bin/formd -i<CR>
 
 " Octopress stuff
 autocmd VimLeavePre $HOME/Weblog/source/_posts/*.markdown set shell=/bin/sh
-autocmd VimLeave $HOME/Weblog/source/_posts/*.markdown !cd ~/Weblog;rake generate;open http://weblog.dev
+autocmd VimLeave $HOME/Weblog/source/_posts/*.markdown !cd ~/Weblog;rake generate;open -g http://weblog.dev;growlnotify -m "Octopress has done it's thing" -n "Octopress" -t "Weblog regenerated"
 
 if hostname() == 'mbp'
     let g:Powerline_colorscheme="skwp"
