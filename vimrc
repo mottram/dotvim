@@ -73,8 +73,8 @@ map <F7> :set complete+=k<CR>
 map <S-F7> :set complete=-k<CR>                                 
 map <F8> :YRShow<CR>                                            " Show the YankRing w/ <F8>
 nnoremap <F3> :GundoToggle<CR>                                  " Show the undo tree w/ <F3>
-nnoremap ; :
-"let g:jekyll_path = "~/mottram"                                 " Tell the Jekyll plugin where my blog is
+nnoremap ; :                                                    " No need to Shift for commands
+nmap <silent> ,/ :nohlsearch<CR>                                " Turn off search highlights
 let g:yankring_history_dir='$HOME/.yr/'
 let g:yankring_clipboard_monitor=1
 autocmd BufRead,BufNewfile ~/notes/* set filetype=markdown      " All files in ~/notes are Markdown
@@ -84,6 +84,7 @@ au FileType mail set tw=65                                      " Thin width whe
 "au FocusLost * :wa                                              " Saves file when vim loses focus
 "let html_use_css = 1                                            " Tell TOhtml to use CSS and XHTML
 "let use_xhtml = 1                                               
+
 if has('statusline')                                            " Status line with git repo info
   set statusline=%<%f\ 
   set statusline+=%w%h%m%r 
@@ -93,7 +94,7 @@ if has('statusline')                                            " Status line wi
   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 endif
 
-" formd
+" Switch between inline and reference links in Mardkown
 nmap <leader>fr :%! ~/bin/formd -r<CR>
 nmap <leader>fi :%! ~/bin/formd -i<CR>
 
@@ -101,7 +102,6 @@ nmap <leader>fi :%! ~/bin/formd -i<CR>
 autocmd VimLeavePre $HOME/Weblog/source/_posts/*.markdown set shell=/bin/sh
 autocmd VimLeave $HOME/Weblog/source/_posts/*.markdown !cd ~/Weblog;rake generate;open -g http://weblog.dev;growlnotify -m "Octopress has done it's thing" -n "Octopress" -t "Weblog regenerated"
 
-if hostname() == 'mbp'
-    let g:Powerline_colorscheme="skwp"
-    let g:Powerline_symbols = 'fancy' 
-endi"f
+" Trying out Powerline
+let g:Powerline_colorscheme="skwp"
+let g:Powerline_symbols = 'fancy' 
