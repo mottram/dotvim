@@ -105,3 +105,6 @@ autocmd VimLeave $HOME/Weblog/source/_posts/*.markdown !cd ~/Weblog;rake generat
 " Trying out Powerline
 let g:Powerline_colorscheme="skwp"
 let g:Powerline_symbols = 'fancy' 
+
+" Trying out dwm.vim
+map <C-A> :call DWM_New()<CR>
