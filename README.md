@@ -2,6 +2,7 @@ This is my Vim configuration
 
 ### Installed plugins:
 
+* [dwm](http://onethingwell.org/post/30032313633/dwm-vim)
 * [Fugitive](https://github.com/tpope/vim-fugitive)
 * [Gundo](https://github.com/sjl/gundo.vim)
 * [l9](https://github.com/vim-scripts/L9)
