@@ -85,14 +85,14 @@ au FileType mail set tw=65                                      " Thin width whe
 "let html_use_css = 1                                            " Tell TOhtml to use CSS and XHTML
 "let use_xhtml = 1                                               
 
-if has('statusline')                                            " Status line with git repo info
-  set statusline=%<%f\ 
-  set statusline+=%w%h%m%r 
-  set statusline+=%{fugitive#statusline()}
-  set statusline+=\ [%{&ff}/%Y]  
-  set statusline+=\ [%{getcwd()}]
-  set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
-endif
+"if has('statusline')                                            " Status line with git repo info
+  "set statusline=%<%f\ 
+  "set statusline+=%w%h%m%r 
+  "set statusline+=%{fugitive#statusline()}
+  "set statusline+=\ [%{&ff}/%Y]  
+  "set statusline+=\ [%{getcwd()}]
+  "set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+"endif
 
 " Switch between inline and reference links in Mardkown
 nmap <leader>fr :%! ~/bin/formd -r<CR>
