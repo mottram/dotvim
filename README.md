@@ -37,8 +37,8 @@ This is my Vim configuration
 
 #### Removing plugins
 
-* Remove references to submodule in .gitmodules, .git/config
-* `git rm --cached bundle/bundle-dir
+* Remove references to submodule in `.gitmodules`, `.git/config`
+* `git rm --cached bundle/bundle-dir`
 
 #### Installing on a new machine
 
