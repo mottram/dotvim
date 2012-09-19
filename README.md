@@ -31,7 +31,6 @@ This is my Vim configuration
 
 #### Updating plugins
 
-* `git submodule foreach git checkout master`
 * `git submodule foreach git pull`
 * `git commit -a -m "Updated plugins"`
 
