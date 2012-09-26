@@ -46,7 +46,7 @@ set tabpagemax=20                                               " Set maximum no
 set showtabline=2                                               " Always show tabs
 set showmatch	                                                " Highlight matching brackets
 set ffs=unix,mac                                                " Unix and Mac file formats
-set guifont=Monaco:h10                                          " 10pt Monaco in MacVim
+set guifont=Monaco:h12                                          " 10pt Monaco in MacVim
 set tabstop=4                                                   " Tab settings...
 set shiftwidth=4
 set softtabstop=4
