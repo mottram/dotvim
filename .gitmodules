@@ -58,3 +58,6 @@
 	path = bundle/powerline
     url = https://github.com/Lokaltog/vim-powerline.git
     ignore = dirty
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
