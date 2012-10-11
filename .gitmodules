@@ -18,10 +18,6 @@
 	path   = bundle/yankring
 	url    = https://github.com/vim-scripts/YankRing.vim.git
     ignore = dirty
-[submodule "bundle/jekyll"]
-	path   = bundle/jekyll
-	url    = git@github.com:mottram/jekyll.vim.mottram.git
-    ignore = dirty
 [submodule "bundle/fugitive"]
 	path   = bundle/fugitive
 	url    = https://github.com/tpope/vim-fugitive.git
