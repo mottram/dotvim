@@ -1,5 +1,7 @@
 This is my Vim configuration
 
+
+
 ### Installed plugins:
 
 * [dwm](http://onethingwell.org/post/30032313633/dwm-vim)
@@ -12,8 +14,8 @@ This is my Vim configuration
 * [NERDTreeTabs](https://github.com/jistr/vim-nerdtree-tabs)
 * [Pathogen](https://github.com/tpope/vim-pathogen)
 * [Powerline](https://github.com/Lokaltog/vim-powerline)
-* [Snipmate](git@github.com:mottram/snipmate.vim.git) (link goes to my fork)
 * [Supertab](https://github.com/scrooloose/nerdtree)
+* [UltiSnips](https://github.com/SirVer/ultisnips)
 * [Vimoutliner](https://github.com/vimoutliner/vimoutliner)
 * [YankRing](https://github.com/vim-scripts/YankRing.vim)
 
