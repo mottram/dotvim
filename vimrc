@@ -84,6 +84,8 @@ map <C-A> :call DWM_New()<CR>                                   " Remap dwm.vim 
 nmap <leader>fr :%! ~/bin/formd -r<CR>                          " Convert inline Markdown links to reference...
 nmap <leader>fi :%! ~/bin/formd -i<CR>                          " ... and vice versa
 
+nnoremap <C-X> :CtrlP<CR>
+
 au BufRead,BufNewfile ~/notes/* set filetype=markdown           " All files in ~/notes are Markdown
 au BufWinLeave *.html,*.css mkview	
 au BufWinEnter *.html,*.css silent loadview	
