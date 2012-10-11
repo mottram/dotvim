@@ -89,6 +89,10 @@ au BufWinLeave *.html,*.css mkview
 au BufWinEnter *.html,*.css silent loadview	
 au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
 
+let g:UltiSnipsExpandTrigger="<tab>"                            " Use <tab> to trigger UltiSnips
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
     
 if has('statusline')                                            " Status line with git repo info
   set statusline=%<%f\ 
@@ -98,7 +102,3 @@ if has('statusline')                                            " Status line wi
   set statusline+=\ [%{getcwd()}]
   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 endif
-
-" Octopress stuff -- second au better as shell script?
-"au VimLeavePre $HOME/Weblog/source/_posts/*.markdown set shell=/bin/sh
-"au VimLeave $HOME/Weblog/source/_posts/*.markdown !cd ~/Weblog;rake generate;open -g http://weblog.dev;growlnotify -m "Octopress has done it's thing" -n "Octopress" -t "Weblog regenerated"

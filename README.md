@@ -1,7 +1,5 @@
 This is my Vim configuration
 
-
-
 ### Installed plugins:
 
 * [dwm](http://onethingwell.org/post/30032313633/dwm-vim)
