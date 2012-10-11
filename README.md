@@ -38,6 +38,8 @@ This is my Vim configuration
 
 * Remove references to submodule in `.gitmodules`, `.git/config`
 * `git rm --cached bundle/bundle-dir`
+* rm -r bundle/bundle-dir
+* git commit -a -m "Removed plugin"
 
 #### Installing on a new machine
 

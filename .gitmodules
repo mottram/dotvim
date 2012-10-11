@@ -14,10 +14,6 @@
 	path   = bundle/supertab
 	url    = https://github.com/ervandew/supertab.git
     ignore = dirty
-[submodule "bundle/snipmate"]
-	path   = bundle/snipmate
-	url    = git@github.com:mottram/snipmate.vim.git
-    ignore = dirty
 [submodule "bundle/yankring"]
 	path   = bundle/yankring
 	url    = https://github.com/vim-scripts/YankRing.vim.git
