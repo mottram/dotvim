@@ -84,7 +84,6 @@ map <C-A> :call DWM_New()<CR>                                   " Remap dwm.vim 
 nmap <leader>fr :%! ~/bin/formd -r<CR>                          " Convert inline Markdown links to reference...
 nmap <leader>fi :%! ~/bin/formd -i<CR>                          " ... and vice versa
 
-nnoremap <C-X> :CtrlP<CR>
 
 au BufRead,BufNewfile ~/notes/* set filetype=markdown           " All files in ~/notes are Markdown
 au BufWinLeave *.html,*.css mkview	
@@ -94,6 +93,8 @@ au FileType mail set tw=65                                      " Thin width whe
 let g:UltiSnipsExpandTrigger="<tab>"                            " Use <tab> to trigger UltiSnips
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:ctrlp_map = '<C-X>'                                       " Use <C-X> for CtrlP
 
     
 if has('statusline')                                            " Status line with git repo info
