@@ -18,10 +18,6 @@
 	path   = bundle/yankring
 	url    = https://github.com/vim-scripts/YankRing.vim.git
     ignore = dirty
-[submodule "bundle/fugitive"]
-	path   = bundle/fugitive
-	url    = https://github.com/tpope/vim-fugitive.git
-    ignore = dirty
 [submodule "bundle/gundo"]
 	path   = bundle/gundo
 	url    = http://github.com/sjl/gundo.vim.git
@@ -45,10 +41,6 @@
 [submodule "bundle/tabular"]
 	path   = bundle/tabular
     url    = https://github.com/godlygeek/tabular.git
-    ignore = dirty
-[submodule "bundle/dwm"]
-	path = bundle/dwm
-	url = https://github.com/spolu/dwm.vim.git
     ignore = dirty
 [submodule "bundle/powerline"]
 	path = bundle/powerline
