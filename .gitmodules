@@ -55,3 +55,6 @@
 [submodule "bundle/clam"]
 	path = bundle/clam
 	url = https://github.com/sjl/clam.vim
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
