@@ -61,3 +61,6 @@
 [submodule "bundle/liquid"]
 	path = bundle/liquid
 	url = https://github.com/vim-scripts/liquid.vim.git
+[submodule "bundle/taskpaper"]
+	path = bundle/taskpaper
+	url = https://github.com/davidoc/taskpaper.vim.git
