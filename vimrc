@@ -3,6 +3,7 @@
 " https://github.com/mottram/dotvim
 " TODO
 " Finish setting up Lightline
+" Update README
 
 filetype off                   					" Required by Vundle
 set rtp+=~/.vim/bundle/vundle/					" Manage plugins with Vundle
@@ -27,6 +28,9 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'itspriddle/vim-marked'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'maxbrunsfeld/vim-yankstack'
+
+call yankstack#setup()
 
 set term=$TERM                                                  
 if &term == "linux"                                             " If I'm on a TTY, use miro8
@@ -37,8 +41,9 @@ else
     colorscheme solarized
 endif
 
-if has("gui_running")                                           " No hideous toolbar in MacVim
-    set guioptions=-t
+if has("gui_running")                                           " MacVim
+    set guioptions=-t                                           " No hideous toolbar
+    set macmeta                                                 " Make Yankstack command key combo work 
 endif
 
 set nocompatible                                                " No need for vi compatability
@@ -85,8 +90,8 @@ filetype indent plugin on                                       " Filetype detec
 let mapleader=","                                               " Use , as Leader
 let gmapleader=","
 
-map Y y$                                                        " Yank to the end of the line w/ Y
-map <leader>nt :tabnew<CR>                                      " New tab w/ ,nt
+map Y y$                                                        " Yank to the end of the line with Y
+map <leader>nt :tabnew<CR>                                      " New tab with ,nt
 nmap <leader>w :w!<CR>                                          " Write file with ,w      
 map <F2> :NERDTreeTabsToggle<CR>                                " Show the directory tree with <F2>
 map <F4> :setlocal spell spelllang=en_gb<CR>                    " Turn on spellcheck with <F4>
@@ -98,6 +103,8 @@ nnoremap <F3> :GundoToggle<CR>                                  " Show the undo 
 nmap <silent> ,/ :nohlsearch<CR>                                " Turn off search highlights w/ ,/
 nmap <leader>fr :%! ~/bin/formd -r<CR>                          " Convert inline Markdown links to reference...
 nmap <leader>fi :%! ~/bin/formd -i<CR>                          " ... and vice versa
+nmap <leader>p <Plug>yankstack_substitute_older_paste           " Cycle through clipboard history
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 au BufRead,BufNewfile ~/notes/* set filetype=markdown           " All files in ~/notes are Markdown
 au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper " All files in ~/taskpaper are Taskpaper
