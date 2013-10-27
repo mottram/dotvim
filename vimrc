@@ -1,15 +1,23 @@
 " Jack Mottram's ~/.vimrc
 " For more details see:
 " https://github.com/mottram/dotvim
-" TODO
-" Finish setting up Lightline
-" Update README
+" TODO Finish setting up Lightline
+" TODO Update README
+" TODO Organise this vimrc a bit
+" TODO Add wildignore settings from
+" https://github.com/gregstallings/vimfiles/blob/master/vimrc
 
-filetype off                   					" Required by Vundle
-set rtp+=~/.vim/bundle/vundle/					" Manage plugins with Vundle
+" =============================================================================
+" Plugin Settings
+" =============================================================================
+
+" Load plugins with Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
 
+" Plugins to load with Vundle
+Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -30,57 +38,123 @@ Bundle 'itspriddle/vim-marked'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'maxbrunsfeld/vim-yankstack'
 
-call yankstack#setup()                                          " Required when using a custom Y mapping with Yankstack
+" =============================================================================
+" Colourschemes & Appearance
+" =============================================================================
 
+" On a TTY, use the miro8 colourscheme
+" If 256 colours are available, use Solarized dark
+" (This includes MacVim)
 set term=$TERM                                                 
-if &term == "linux"                                             " If I'm on a TTY, use miro8
+if &term == "linux"
     colorscheme miro8
 else
-    set t_Co=256                                                " If I have 256 colours, use Solarized
+    set t_Co=256
     set background=dark
     colorscheme solarized
 endif
 
-if has("gui_running")                                           " MacVim
-    set guioptions=-t                                           " No hideous toolbar
-    set macmeta                                                 " Make Yankstack command key combo work 
+" Hide buffers
+set hidden
+
+" Number lines
+set number
+
+" Show relative line numbers (except for the current line)
+set relativenumber
+
+" Highlight the current line
+set cursorline
+
+" Disable error bells
+set noerrorbells
+
+" Remove the hideous toolbar in MacVim
+" Set the macmeta option to enable Yankstack keybindings in MacVim
+if has("gui_running")
+    set guioptions=-t
+    set macmeta
 endif
 
-let mapleader=","                                               " Use ',' as Leader
+" Use comma instead of backslash as leader
+let mapleader=","
 let gmapleader=","
 
 set nocompatible                                                " No need for vi compatability
-set hidden                                                      " Hide buffers
-set number                                                      " Line numbering
-set relativenumber                                              " Relative numbers (except for the current line)
-set cursorline                                                  " Highlight the current line
-set noerrorbells                                                " Disable error bells
-set shortmess=atI                                               " Disable Vim's welcome message
 set autoindent                                                  " Autoindent...
 set smartindent                                                 " ...smartly
 set confirm                                                     " Confirmation required
 set history=1000                                                " Remember plenty of commands
-                                                                " Search settings
-set incsearch                                                   " Search incrementally
-set hlsearch                                                    " Highlight search terms
-set ignorecase                                                  " Case insensitive search...
-set smartcase                                                   " ...for lower case seach terms
-function! MapCR()                                               " Clear last search highlighting with Return
+
+" =============================================================================
+" Search
+" =============================================================================
+
+" Highlight search terms
+set hlsearch
+
+" Search incrementally
+set incsearch
+
+" Case insensitive search...
+set ignorecase
+
+" ...for lower case seach terms
+set smartcase
+
+" Clear last search highlighting with Return
+function! MapCR()
   nnoremap <cr> :nohlsearch<cr>:<backspace>
 endfunction
 call MapCR()
-nnoremap <leader>hl :set hlsearch<cr>                           " Highlight last search with ,hl
+
+" Highlight last search term with ,hl
+nnoremap <leader>hl :set hlsearch<cr>
+
+
 
 set laststatus=2
 set mouse=a                                                     " Enable mouse support
 set showcmd                                                     " Show the command I'm typing
 set ruler                                                       " Show line/column position
-set nobackup                                                    " No ~ backup files
-set writebackup                                                 " Make temporary backups
+
+" =============================================================================
+" Backups & Undo
+" =============================================================================
+
+" No ~backup files
+set nobackup
+
+" Make temporary backups
+set writebackup
 set backupdir=~/.vim/backup
 set directory=~/.vim/temp
-set undodir=~/.vim/undo                                         " Keep undo history
+
+" Keep undo history
 set undofile 
+set undodir=~/.vim/undo
+
+" =============================================================================
+" Copy & Paste
+" =============================================================================
+
+" Manage the clipboard with Yankstack
+" (Requred to enable remapping of 'Y' below)
+call yankstack#setup()
+
+" Cycle through Yankstack's clipboard history
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
+" Yank to the end of the line with Y
+map Y y$
+
+" Integrate vim's clipboard with the system's
+set clipboard=unnamed
+
+
+
+
 set wildmenu                                                    " Command autocompletion
 set wildignore+=.DS_Store                                       " Never show me DS_Store files
 set nomodeline                                                  " Security
@@ -95,13 +169,11 @@ set softtabstop=4
 set smarttab 
 set expandtab
 set dictionary=/usr/share/dict/words                            " Spelling dictionary
-set clipboard=unnamed                                           " System clipboard integration
 set ttyfast                                                     " Improves redrawing in xterm et al
 syntax on                                                       " Syntax highlighting
 filetype indent plugin on                                       " Filetype detection
 
 
-map Y y$                                                        " Yank to the end of the line with Y
 map <leader>nt :tabnew<CR>                                      " New tab with ,nt
 nmap <leader>w :w!<CR>                                          " Write file with ,w      
 map <F2> :NERDTreeTabsToggle<CR>                                " Show the directory tree with F2
@@ -114,8 +186,6 @@ nnoremap <F3> :GundoToggle<CR>                                  " Show the undo 
 nmap <silent> ,/ :nohlsearch<CR>                                " Turn off search highlights with ,/
 nmap <leader>fr :%! ~/bin/formd -r<CR>                          " Convert inline Markdown links to reference...
 nmap <leader>fi :%! ~/bin/formd -i<CR>                          " ... and vice versa
-nmap <leader>p <Plug>yankstack_substitute_older_paste           " Cycle through clipboard history
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 au BufRead,BufNewfile ~/notes/* set filetype=markdown           " All files in ~/notes are Markdown
 au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper " All files in ~/taskpaper are Taskpaper
@@ -128,6 +198,12 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:ctrlp_map = '<C-X>'                                       " Use <C-X> for CtrlP
 let g:nerdtree_tabs_open_on_gui_startup=0                       " Don't open NERDTree tab in MacVim
+
+
+" =============================================================================
+" Statusline
+" =============================================================================
+
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
