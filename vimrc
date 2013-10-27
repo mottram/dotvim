@@ -21,6 +21,7 @@ endif
 set nocompatible                                                " No need for vi compatability
 set hidden                                                      " Hide buffers
 set number                                                      " Line numbering
+set relativenumber                                              " Relative numbers (except for the current line)
 set autoindent                                                  " Autoindent...
 set smartindent                                                 " ...smartly
 set confirm                                                     " Confirmation required
@@ -86,6 +87,7 @@ nmap <leader>fi :%! ~/bin/formd -i<CR>                          " ... and vice v
 
 
 au BufRead,BufNewfile ~/notes/* set filetype=markdown           " All files in ~/notes are Markdown
+au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper " All files in ~/taskpaper are Taskpaper
 au BufWinLeave *.html,*.css mkview	
 au BufWinEnter *.html,*.css silent loadview	
 au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
