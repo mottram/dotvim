@@ -1,6 +1,8 @@
 " Jack Mottram's ~/.vimrc
 " For more details see:
 " https://github.com/mottram/dotvim
+" TODO
+" Finish setting up Lightline
 
 filetype off                   					" Required by Vundle
 set rtp+=~/.vim/bundle/vundle/					" Manage plugins with Vundle
@@ -9,10 +11,11 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 Bundle 'sjl/gundo.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'SirVir/ultisnips'
-Bundle 'kien/ctrlp'
+Bundle 'kien/ctrlp.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'SirVer/ultisnips'
 Bundle 'vimoutliner/vimoutliner'
@@ -21,9 +24,10 @@ Bundle 'itchyny/lightline.vim'
 Bundle 'davidoc/taskpaper.vim'
 Bundle 'sjl/clam.vim'
 Bundle 'ervandew/supertab'
-" TODO
-" Configure lightline?
-" 
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'itspriddle/vim-marked'
+Bundle 'tomtom/tcomment_vim'
 
 set term=$TERM                                                  
 if &term == "linux"                                             " If I'm on a TTY, use miro8
@@ -81,7 +85,6 @@ filetype indent plugin on                                       " Filetype detec
 
 let mapleader=","                                               " Use , as Leader
 let gmapleader=","
-let g:yankring_history_dir='$HOME/.yr/'                         " YankRing settings
 
 map Y y$                                                        " Yank to the end of the line w/ Y
 map <leader>nt :tabnew<CR>                                      " New tab w/ ,nt
@@ -92,13 +95,10 @@ map <F5> :set nospell<CR>                                       " Turn off spell
 set pastetoggle=<F6>                                            " Toggle paste mode with <F6>
 map <F7> :set complete+=k<CR>                                   " Turn dictionary autocomplete on...
 map <S-F7> :set complete=-k<CR>                                 " ... and off
-map <F8> :YRShow<CR>                                            " Show the YankRing w/ <F8>
 nnoremap <F3> :GundoToggle<CR>                                  " Show the undo tree w/ <F3>
 nmap <silent> ,/ :nohlsearch<CR>                                " Turn off search highlights w/ ,/
-map <C-A> :call DWM_New()<CR>                                   " Remap dwm.vim new window to <C-A>
 nmap <leader>fr :%! ~/bin/formd -r<CR>                          " Convert inline Markdown links to reference...
 nmap <leader>fi :%! ~/bin/formd -i<CR>                          " ... and vice versa
-
 
 au BufRead,BufNewfile ~/notes/* set filetype=markdown           " All files in ~/notes are Markdown
 au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper " All files in ~/taskpaper are Taskpaper
@@ -112,12 +112,25 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 let g:ctrlp_map = '<C-X>'                                       " Use <C-X> for CtrlP
 
-    
-if has('statusline')                                            " Status line with git repo info
-  set statusline=%<%f\ 
-  set statusline+=%w%h%m%r 
-  set statusline+=%{fugitive#statusline()}
-  set statusline+=\ [%{&ff}/%Y]  
-  set statusline+=\ [%{getcwd()}]
-  set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
-endif
+let g:nerdtree_tabs_open_on_gui_startup=0                       " Don't open NERDTree tab in MacVim
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
+
+
