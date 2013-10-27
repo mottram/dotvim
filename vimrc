@@ -2,8 +2,28 @@
 " For more details see:
 " https://github.com/mottram/dotvim
 
-call pathogen#runtime_append_all_bundles()                      " Pathogen manages plugins
-call pathogen#helptags()
+filetype off                   					" Required by Vundle
+set rtp+=~/.vim/bundle/vundle/					" Manage plugins with Vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-fugitive'
+Bundle 'sjl/gundo.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'SirVir/ultisnips'
+Bundle 'kien/ctrlp'
+Bundle 'godlygeek/tabular'
+Bundle 'SirVer/ultisnips'
+Bundle 'vimoutliner/vimoutliner'
+Bundle 'godlygeek/tabular'
+Bundle 'itchyny/lightline.vim'
+Bundle 'davidoc/taskpaper.vim'
+Bundle 'sjl/clam.vim'
+Bundle 'ervandew/supertab'
+" TODO
+" Configure lightline?
+" 
 
 set term=$TERM                                                  
 if &term == "linux"                                             " If I'm on a TTY, use miro8
@@ -62,11 +82,6 @@ filetype indent plugin on                                       " Filetype detec
 let mapleader=","                                               " Use , as Leader
 let gmapleader=","
 let g:yankring_history_dir='$HOME/.yr/'                         " YankRing settings
-let g:yankring_clipboard_monitor=1
-let g:Powerline_colorscheme="skwp"                              " Powerline settings
-if has("macunix")
-    let g:Powerline_symbols = 'fancy'
-endif
 
 map Y y$                                                        " Yank to the end of the line w/ Y
 map <leader>nt :tabnew<CR>                                      " New tab w/ ,nt
@@ -79,7 +94,6 @@ map <F7> :set complete+=k<CR>                                   " Turn dictionar
 map <S-F7> :set complete=-k<CR>                                 " ... and off
 map <F8> :YRShow<CR>                                            " Show the YankRing w/ <F8>
 nnoremap <F3> :GundoToggle<CR>                                  " Show the undo tree w/ <F3>
-nnoremap ; :                                                    " No need to Shift for commands
 nmap <silent> ,/ :nohlsearch<CR>                                " Turn off search highlights w/ ,/
 map <C-A> :call DWM_New()<CR>                                   " Remap dwm.vim new window to <C-A>
 nmap <leader>fr :%! ~/bin/formd -r<CR>                          " Convert inline Markdown links to reference...

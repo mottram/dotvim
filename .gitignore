@@ -1,5 +1,8 @@
+.DS_Store
 backup
 temp
 view
 undo
 .netrwhist
+bundle/**
+~bundle/vundle
