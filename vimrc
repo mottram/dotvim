@@ -30,9 +30,9 @@ Bundle 'itspriddle/vim-marked'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'maxbrunsfeld/vim-yankstack'
 
-call yankstack#setup()
+call yankstack#setup()                                          " Required when using a custom Y mapping with Yankstack
 
-set term=$TERM                                                  
+set term=$TERM                                                 
 if &term == "linux"                                             " If I'm on a TTY, use miro8
     colorscheme miro8
 else
@@ -46,18 +46,31 @@ if has("gui_running")                                           " MacVim
     set macmeta                                                 " Make Yankstack command key combo work 
 endif
 
+let mapleader=","                                               " Use ',' as Leader
+let gmapleader=","
+
 set nocompatible                                                " No need for vi compatability
 set hidden                                                      " Hide buffers
 set number                                                      " Line numbering
 set relativenumber                                              " Relative numbers (except for the current line)
+set cursorline                                                  " Highlight the current line
+set noerrorbells                                                " Disable error bells
+set shortmess=atI                                               " Disable Vim's welcome message
 set autoindent                                                  " Autoindent...
 set smartindent                                                 " ...smartly
 set confirm                                                     " Confirmation required
 set history=1000                                                " Remember plenty of commands
+                                                                " Search settings
 set incsearch                                                   " Search incrementally
 set hlsearch                                                    " Highlight search terms
 set ignorecase                                                  " Case insensitive search...
 set smartcase                                                   " ...for lower case seach terms
+function! MapCR()                                               " Clear last search highlighting with Return
+  nnoremap <cr> :nohlsearch<cr>:<backspace>
+endfunction
+call MapCR()
+nnoremap <leader>hl :set hlsearch<cr>                           " Highlight last search with ,hl
+
 set laststatus=2
 set mouse=a                                                     " Enable mouse support
 set showcmd                                                     " Show the command I'm typing
@@ -87,20 +100,18 @@ set ttyfast                                                     " Improves redra
 syntax on                                                       " Syntax highlighting
 filetype indent plugin on                                       " Filetype detection
 
-let mapleader=","                                               " Use , as Leader
-let gmapleader=","
 
 map Y y$                                                        " Yank to the end of the line with Y
 map <leader>nt :tabnew<CR>                                      " New tab with ,nt
 nmap <leader>w :w!<CR>                                          " Write file with ,w      
-map <F2> :NERDTreeTabsToggle<CR>                                " Show the directory tree with <F2>
-map <F4> :setlocal spell spelllang=en_gb<CR>                    " Turn on spellcheck with <F4>
-map <F5> :set nospell<CR>                                       " Turn off spellcheck with <F5>
-set pastetoggle=<F6>                                            " Toggle paste mode with <F6>
+map <F2> :NERDTreeTabsToggle<CR>                                " Show the directory tree with F2
+map <F4> :setlocal spell spelllang=en_gb<CR>                    " Turn on spellcheck with F4
+map <F5> :set nospell<CR>                                       " Turn off spellcheck with F5
+set pastetoggle=<F6>                                            " Toggle paste mode with F6
 map <F7> :set complete+=k<CR>                                   " Turn dictionary autocomplete on...
 map <S-F7> :set complete=-k<CR>                                 " ... and off
-nnoremap <F3> :GundoToggle<CR>                                  " Show the undo tree w/ <F3>
-nmap <silent> ,/ :nohlsearch<CR>                                " Turn off search highlights w/ ,/
+nnoremap <F3> :GundoToggle<CR>                                  " Show the undo tree with F3
+nmap <silent> ,/ :nohlsearch<CR>                                " Turn off search highlights with ,/
 nmap <leader>fr :%! ~/bin/formd -r<CR>                          " Convert inline Markdown links to reference...
 nmap <leader>fi :%! ~/bin/formd -i<CR>                          " ... and vice versa
 nmap <leader>p <Plug>yankstack_substitute_older_paste           " Cycle through clipboard history
@@ -115,11 +126,8 @@ au FileType mail set tw=65                                      " Thin width whe
 let g:UltiSnipsExpandTrigger="<tab>"                            " Use <tab> to trigger UltiSnips
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 let g:ctrlp_map = '<C-X>'                                       " Use <C-X> for CtrlP
-
 let g:nerdtree_tabs_open_on_gui_startup=0                       " Don't open NERDTree tab in MacVim
-
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -138,5 +146,3 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
-
-
