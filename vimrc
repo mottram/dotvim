@@ -1,14 +1,21 @@
 " Jack Mottram's ~/.vimrc
 " For more details see:
 " https://github.com/mottram/dotvim
-" TODO Finish setting up Lightline
 " TODO Update README
-" TODO Organise this vimrc a bit
-" TODO Add wildignore settings from
-" https://github.com/gregstallings/vimfiles/blob/master/vimrc
+" TODO Check lightline on linux, maybe use alternate statusline if not?
 
 " =============================================================================
-" Plugin Settings
+" Setup
+" =============================================================================
+
+" Use Vim settings, not vi settings
+set nocompatible
+
+" Turn off modelines
+set nomodeline
+
+" =============================================================================
+" Plugins
 " =============================================================================
 
 " Load plugins with Vundle
@@ -16,48 +23,92 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Plugins to load with Vundle
+" Vundle must be managed by Vundle!
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-markdown'
+
+" Git wrangling
+" https://github.com/tpope/vim-fugitive
 Bundle 'tpope/vim-fugitive'
+
+" Easy quoting/parenthesizing
+" https://github.com/tpope/vim-surround
 Bundle 'tpope/vim-surround'
+
+" Visualise the undo tree
+" https://github.com/sjl/gundo.vim
 Bundle 'sjl/gundo.vim'
+
+" Pretty colours
 Bundle 'altercation/vim-colors-solarized'
+
+" Snippet expansion
+" https://github.com/SirVer/ultisnips
 Bundle 'SirVir/ultisnips'
+
+" Find files, open buffers, recently used, &c.
+" https://github.com/kien/ctrlp.vim
 Bundle 'kien/ctrlp.vim'
+
+" Text filtering and alignment
+" https://github.com/godlygeek/tabular
 Bundle 'godlygeek/tabular'
-Bundle 'SirVer/ultisnips'
+
+" Outliner mode
+" https://github.com/vimoutliner/vimoutliner
 Bundle 'vimoutliner/vimoutliner'
+
+" A fancy statusline
+" https://github.com/itchyny/lightline.vim
 Bundle 'itchyny/lightline.vim'
-Bundle 'davidoc/taskpaper.vim'
+
+" Shell command helper
+" https://github.com/sjl/clam.vim
 Bundle 'sjl/clam.vim'
+
+" Use tab for completions
+" https://github.com/ervandew/supertab
 Bundle 'ervandew/supertab'
+
+" Filesystem sidebar
+" https://github.com/scrooloose/nerdtree
 Bundle 'scrooloose/nerdtree'
+
+" Make NERDTree work independently of tabs
+" https://github.com/jistr/vim-nerdtree-tabs
 Bundle 'jistr/vim-nerdtree-tabs'
+
+" Taskpaper syntax highlighting
+" https://github.com/davidoc/taskpaper.vim
+Bundle 'davidoc/taskpaper.vim'
+
+" Markdown syntax highlighting
+" https://github.com/tpope/vim-markdown
+Bundle 'tpope/vim-markdown'
+
+" Preview Mardkown files in Marked
+" https://github.com/itspriddle/vim-marked
 Bundle 'itspriddle/vim-marked'
+
+" Toggle comments
+" https://github.com/tomtom/tcomment_vim
 Bundle 'tomtom/tcomment_vim'
+
+" Clipboard history
+" https://github.com/maxbrunsfeld/vim-yankstack
 Bundle 'maxbrunsfeld/vim-yankstack'
 
 " =============================================================================
-" Colourschemes & Appearance
+" User Interface
 " =============================================================================
 
-" On a TTY, use the miro8 colourscheme
-" If 256 colours are available, use Solarized dark
-" (This includes MacVim)
-set term=$TERM                                                 
-if &term == "linux"
-    colorscheme miro8
-else
-    set t_Co=256
-    set background=dark
-    colorscheme solarized
-endif
+" Use comma instead of backslash as leader
+let mapleader=","
+let gmapleader=","
 
 " Hide buffers
 set hidden
 
-" Number lines
+" Show line numbers
 set number
 
 " Show relative line numbers (except for the current line)
@@ -66,28 +117,136 @@ set relativenumber
 " Highlight the current line
 set cursorline
 
-" Disable error bells
-set noerrorbells
+" Always show the statusline
+set laststatus=2
 
-" Remove the hideous toolbar in MacVim
+" Show line & column position
+set ruler
+
+" Always show tabs
+set showtabline=2
+
+" Set maximum no. of tabs to 20
+" Applies when opening with vim -p
+set tabpagemax=20
+
+" Toggle the NERDTree sidebar with <F2>
+map <F2> :NERDTreeTabsToggle<CR>
+
+" Toggle Gundo's undo tree with <F3>
+nnoremap <F3> :GundoToggle<CR>
+
+" Open the CtrlP search pane with Control+X
+let g:ctrlp_map = '<C-X>'
+
+" Enable mouse support (heresy!)
+set mouse=a
+
+" Show incomplete commands 
+set showcmd
+
+" Remember plenty of past commands
+set history=1000
+
+" Improve tab command completion
+set wildmenu
+
+" Ignore DS_Store files
+set wildignore+=.DS_Store
+
+" Ignore archives
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" Ignore temp and backup files
+set wildignore+=*.swp,*~,._*
+
+" Colourscheme settings
+" On a TTY, use the miro8 colourscheme (see http://1tw.org/1deUzmR). If 256
+" colours are available, use Solarized dark
+set term=$TERM
+if &term == "linux"
+    colorscheme miro8
+else
+    set t_Co=256
+    set background=dark
+    colorscheme solarized
+endif
+
+" Macvim settings
+if has("gui_running")
+    " Use 10pt Monaco in MacVim
+    set guifont=Monaco:h12
+    " Remove the hideous toolbar in MacVim
+    set guioptions=-t
+    " Use text dialogs instead of GUI popups
+    set guioptions+=c
+endif
+
+" Don't open the NERDTree sidebar automatically in MacVim
+let g:nerdtree_tabs_open_on_gui_startup=0
+
+" =============================================================================
+" Text Editing, Formatting & Snippets
+" =============================================================================
+
+" Indent automatically
+set autoindent
+set smartindent
+set shiftwidth=4
+
+" Tab settings
+set tabstop=4
+set softtabstop=4
+set smarttab
+set expandtab
+
+" Make folds persistent
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
+
+" Trigger UltiSnips with Tab
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Convert inline Markdown links to references with formd, and vice versa
+nmap <leader>fr :%! ~/bin/formd -r<CR>
+nmap <leader>fi :%! ~/bin/formd -i<CR>
+
+" Ask before closing unsaved files, &c.
+set confirm
+
+" =============================================================================
+" Copy & Paste
+" =============================================================================
+
+" Manage the clipboard with Yankstack
+" (Required or the remapping of 'Y' below won't work)
+call yankstack#setup()
+
+" Cycle through Yankstack's clipboard history
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
 " Set the macmeta option to enable Yankstack keybindings in MacVim
 if has("gui_running")
-    set guioptions=-t
     set macmeta
 endif
 
-" Use comma instead of backslash as leader
-let mapleader=","
-let gmapleader=","
+" Yank to the end of the line with Y
+map Y y$
 
-set nocompatible                                                " No need for vi compatability
-set autoindent                                                  " Autoindent...
-set smartindent                                                 " ...smartly
-set confirm                                                     " Confirmation required
-set history=1000                                                " Remember plenty of commands
+" Integrate with the system clipboard
+set clipboard=unnamed
+
+" Toggle paste mode with F6
+set pastetoggle=<F6>
+
+" Always exit paste mode when leaving insert mode
+au InsertLeave * set nopaste
 
 " =============================================================================
-" Search
+" Search & Highlighting
 " =============================================================================
 
 " Highlight search terms
@@ -96,27 +255,64 @@ set hlsearch
 " Search incrementally
 set incsearch
 
-" Case insensitive search...
+" Make search case insensitive...
 set ignorecase
 
-" ...for lower case seach terms
+" ...unless there's an upper case character
 set smartcase
 
 " Clear last search highlighting with Return
 function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>:<backspace>
+    nnoremap <cr> :nohlsearch<cr>:<backspace>
 endfunction
 call MapCR()
 
 " Highlight last search term with ,hl
 nnoremap <leader>hl :set hlsearch<cr>
 
+" Enable syntax highlighting
+syntax on
 
+" Highlight matching brackets
+set showmatch
 
-set laststatus=2
-set mouse=a                                                     " Enable mouse support
-set showcmd                                                     " Show the command I'm typing
-set ruler                                                       " Show line/column position
+" =============================================================================
+" Filetypes
+" =============================================================================
+
+" Unix & Mac Filetypes only
+set ffs=unix,mac
+
+" Detect filetypes
+filetype indent plugin on
+
+" All files in the Notes directory  are Markdown
+au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
+
+" All files in the Taskpaper directory are Taskpaper
+au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
+
+" Set text width to 65 when writing mail in mutt
+au FileType mail set tw=65
+
+" =============================================================================
+" Spelling & Dictionary
+" =============================================================================
+
+" Set dictionary
+set dictionary=/usr/share/dict/words
+
+" Turn on spellcheck with F4
+map <F4> :setlocal spell spelllang=en_gb<CR>
+
+" Turn off spellcheck with F5
+map <F5> :set nospell<CR>
+
+" Turn dictionary autocomplete on...
+map <F7> :set complete+=k<CR>
+
+" ... and off
+map <S-F7> :set complete=-k<CR>
 
 " =============================================================================
 " Backups & Undo
@@ -131,94 +327,79 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/temp
 
 " Keep undo history
-set undofile 
+set undofile
 set undodir=~/.vim/undo
-
-" =============================================================================
-" Copy & Paste
-" =============================================================================
-
-" Manage the clipboard with Yankstack
-" (Requred to enable remapping of 'Y' below)
-call yankstack#setup()
-
-" Cycle through Yankstack's clipboard history
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
-" Yank to the end of the line with Y
-map Y y$
-
-" Integrate vim's clipboard with the system's
-set clipboard=unnamed
-
-
-
-
-set wildmenu                                                    " Command autocompletion
-set wildignore+=.DS_Store                                       " Never show me DS_Store files
-set nomodeline                                                  " Security
-set tabpagemax=20                                               " Set maximum no. of 'vim -p' tabs to 20
-set showtabline=2                                               " Always show tabs
-set showmatch	                                                " Highlight matching brackets
-set ffs=unix,mac                                                " Unix and Mac file formats
-set guifont=Monaco:h12                                          " 10pt Monaco in MacVim
-set tabstop=4                                                   " Tab settings...
-set shiftwidth=4
-set softtabstop=4
-set smarttab 
-set expandtab
-set dictionary=/usr/share/dict/words                            " Spelling dictionary
-set ttyfast                                                     " Improves redrawing in xterm et al
-syntax on                                                       " Syntax highlighting
-filetype indent plugin on                                       " Filetype detection
-
-
-map <leader>nt :tabnew<CR>                                      " New tab with ,nt
-nmap <leader>w :w!<CR>                                          " Write file with ,w      
-map <F2> :NERDTreeTabsToggle<CR>                                " Show the directory tree with F2
-map <F4> :setlocal spell spelllang=en_gb<CR>                    " Turn on spellcheck with F4
-map <F5> :set nospell<CR>                                       " Turn off spellcheck with F5
-set pastetoggle=<F6>                                            " Toggle paste mode with F6
-map <F7> :set complete+=k<CR>                                   " Turn dictionary autocomplete on...
-map <S-F7> :set complete=-k<CR>                                 " ... and off
-nnoremap <F3> :GundoToggle<CR>                                  " Show the undo tree with F3
-nmap <silent> ,/ :nohlsearch<CR>                                " Turn off search highlights with ,/
-nmap <leader>fr :%! ~/bin/formd -r<CR>                          " Convert inline Markdown links to reference...
-nmap <leader>fi :%! ~/bin/formd -i<CR>                          " ... and vice versa
-
-au BufRead,BufNewfile ~/notes/* set filetype=markdown           " All files in ~/notes are Markdown
-au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper " All files in ~/taskpaper are Taskpaper
-au BufWinLeave *.html,*.css mkview	
-au BufWinEnter *.html,*.css silent loadview	
-au FileType mail set tw=65                                      " Thin width when writing mail in mutt 
-
-let g:UltiSnipsExpandTrigger="<tab>"                            " Use <tab> to trigger UltiSnips
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:ctrlp_map = '<C-X>'                                       " Use <C-X> for CtrlP
-let g:nerdtree_tabs_open_on_gui_startup=0                       " Don't open NERDTree tab in MacVim
-
 
 " =============================================================================
 " Statusline
 " =============================================================================
+" A nice statusline, using a basic config from the Lightline README
+" http://1tw.org/1buK2Sv
+" Depends on Fugitive for git status
+" Requires fonts patched for powerline, see
+" https://github.com/Lokaltog/powerline
 
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'fugitive', 'filename' ] ]
       \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \   'readonly': 'MyReadonly',
+      \   'modified': 'MyModified',
+      \   'filename': 'MyFilename'
       \ },
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
+
+" Display a + if the file has been modified
+function! MyModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+" Dislpay a ⭤ if the file is read only
+function! MyReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "⭤"
+  else
+    return ""
+  endif
+endfunction
+
+" Show a ⭠ if the file is in a git repo, and display the branch
+function! MyFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? '⭠ '._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+" Old statusline, might be needed on linux?
+" 
+" if has('statusline')
+"   set statusline=%<%f\ 
+"   set statusline+=%w%h%m%r 
+"   set statusline+=%{fugitive#statusline()}
+"   set statusline+=\ [%{&ff}/%Y]  
+"   set statusline+=\ [%{getcwd()}]
+"   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+" endif
