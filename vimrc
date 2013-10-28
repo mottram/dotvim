@@ -98,6 +98,10 @@ Bundle 'tomtom/tcomment_vim'
 " https://github.com/maxbrunsfeld/vim-yankstack
 Bundle 'maxbrunsfeld/vim-yankstack'
 
+" Improved matching with %
+" https://github.com/edsono/vim-matchit
+Bundle 'edsono/vim-matchit'
+
 " =============================================================================
 " Filetypes
 " =============================================================================
