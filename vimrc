@@ -1,7 +1,6 @@
 " Jack Mottram's ~/.vimrc
 " For more details see:
 " https://github.com/mottram/dotvim
-" TODO Update README
 " TODO Custom Ultisnips? Do I really need Ultisnips?
 
 " =============================================================================
