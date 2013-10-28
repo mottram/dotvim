@@ -7,5 +7,5 @@ vimrc.min
 install.sh
 .netrwhist
 bundle/**
-~bundle/vundle
+!bundle/vundle
 
