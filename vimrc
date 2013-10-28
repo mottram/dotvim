@@ -44,7 +44,7 @@ Bundle 'altercation/vim-colors-solarized'
 
 " Snippet expansion
 " https://github.com/SirVer/ultisnips
-Bundle 'SirVir/ultisnips'
+Bundle 'SirVer/ultisnips'
 
 " Find files, open buffers, recently used, &c.
 " https://github.com/kien/ctrlp.vim
