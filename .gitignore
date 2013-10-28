@@ -3,6 +3,9 @@ backup
 temp
 view
 undo
+vimrc.min
+install.sh
 .netrwhist
 bundle/**
 ~bundle/vundle
+

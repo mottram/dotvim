@@ -2,7 +2,7 @@
 " For more details see:
 " https://github.com/mottram/dotvim
 " TODO Update README
-" TODO Check lightline on linux, maybe use alternate statusline if not?
+" TODO Custom Ultisnips? Do I really need Ultisnips?
 
 " =============================================================================
 " Setup
@@ -98,6 +98,29 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'maxbrunsfeld/vim-yankstack'
 
 " =============================================================================
+" Filetypes
+" =============================================================================
+
+" Unix & Mac Filetypes only
+set ffs=unix,mac
+
+" Use utf-8, no BOM
+set encoding=utf-8 nobomb
+
+" Detect filetypes
+filetype indent plugin on
+
+" All files in the Notes directory  are Markdown
+au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
+
+" All files in the Taskpaper directory are Taskpaper
+au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
+
+" Set text width to 65 when writing mail in mutt
+au FileType mail set tw=65
+
+
+" =============================================================================
 " User Interface
 " =============================================================================
 
@@ -174,16 +197,37 @@ endif
 
 " Macvim settings
 if has("gui_running")
-    " Use 10pt Monaco in MacVim
+" Use 10pt Monaco in MacVim
     set guifont=Monaco:h12
-    " Remove the hideous toolbar in MacVim
+" Remove the hideous toolbar in MacVim
     set guioptions=-t
-    " Use text dialogs instead of GUI popups
+" Use text dialogs instead of GUI popups
     set guioptions+=c
 endif
 
 " Don't open the NERDTree sidebar automatically in MacVim
 let g:nerdtree_tabs_open_on_gui_startup=0
+
+" Lightline statusline
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
 
 " =============================================================================
 " Text Editing, Formatting & Snippets
@@ -277,25 +321,6 @@ syntax on
 set showmatch
 
 " =============================================================================
-" Filetypes
-" =============================================================================
-
-" Unix & Mac Filetypes only
-set ffs=unix,mac
-
-" Detect filetypes
-filetype indent plugin on
-
-" All files in the Notes directory  are Markdown
-au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
-
-" All files in the Taskpaper directory are Taskpaper
-au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
-
-" Set text width to 65 when writing mail in mutt
-au FileType mail set tw=65
-
-" =============================================================================
 " Spelling & Dictionary
 " =============================================================================
 
@@ -330,72 +355,8 @@ set directory=~/.vim/temp
 set undofile
 set undodir=~/.vim/undo
 
-" =============================================================================
-" Statusline
-" =============================================================================
-" A nice statusline, using a basic config from the Lightline README
-" http://1tw.org/1buK2Sv
-" Depends on Fugitive for git status
-" Requires fonts patched for powerline, see
-" https://github.com/Lokaltog/powerline
 
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'readonly': 'MyReadonly',
-      \   'modified': 'MyModified',
-      \   'filename': 'MyFilename'
-      \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-      \ }
-
-" Display a + if the file has been modified
-function! MyModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-" Dislpay a ⭤ if the file is read only
-function! MyReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "⭤"
-  else
-    return ""
-  endif
-endfunction
-
-" Show a ⭠ if the file is in a git repo, and display the branch
-function! MyFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? '⭠ '._ : ''
-  endif
-  return ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-" Old statusline, might be needed on linux?
-" 
-" if has('statusline')
+" Simple statusline
 "   set statusline=%<%f\ 
 "   set statusline+=%w%h%m%r 
 "   set statusline+=%{fugitive#statusline()}
