@@ -39,6 +39,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'sjl/gundo.vim'
 
 " Pretty colours
+" https://github.com/altercation/vim-colors-solarized
 Bundle 'altercation/vim-colors-solarized'
 
 " Snippet expansion
