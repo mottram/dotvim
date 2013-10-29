@@ -32,6 +32,10 @@ Bundle 'tpope/vim-fugitive'
 " https://github.com/tpope/vim-surround
 Bundle 'tpope/vim-surround'
 
+" Repeat vim-surround stuff with '.'
+" https://github.com/tpope/vim-repeat
+Bundle 'tpope/vim-repeat'
+
 " Visualise the undo tree
 " https://github.com/sjl/gundo.vim
 Bundle 'sjl/gundo.vim'
