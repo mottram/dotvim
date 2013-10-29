@@ -4,7 +4,7 @@
 2. `mkdir -p ~/.vim/{backup,temp,undo,view}`
 2. `ln -s ~/.vim/vimrc ~/.vimrc`
 3. `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
-4. Launch Vim and run :BundleInstall
+4. Launch Vim and run :`BundleInstall`
 
 ### Plugins
 
