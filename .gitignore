@@ -3,5 +3,5 @@ backup
 temp
 view
 undo
+bundle
 .netrwhist
-bundle/**
