@@ -24,5 +24,7 @@
 * [NERDTreeTabs](https://github.com/jistr/vim-nerdtree-tabs)
 * [Taskpaper](https://github.com/davidoc/taskpaper.vim)
 * [Markdown](https://github.com/tpope/vim-markdown)
+* [Marked](https://github.com/itspriddle/vim-marked)
 * [TComment](tomtom/tcomment_vim)
 * [Yankstack](https://github.com/maxbrunsfeld/vim-yankstack)
+* [Matchit](https://github.com/edsono/vim-matchit)
