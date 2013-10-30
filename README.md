@@ -1,10 +1,12 @@
+## Notes to self
+
 ### Setup
 
 1. `git clone https://github.com/mottram/dotvim.git ~/.vim`
-2. `mkdir -p ~/.vim/{backup,temp,undo,view}`
-2. `ln -s ~/.vim/vimrc ~/.vimrc`
+2. `mkdir -p ~/.vim/{bundle,backup,temp,undo,view}`
 3. `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
-4. `vim +BundleInstall +qall`
+4. `ln -s ~/.vim/vimrc ~/.vimrc`
+5. `vim +BundleInstall +qall`
 
 ### Plugins
 
