@@ -1,7 +1,6 @@
 " Jack Mottram's ~/.vimrc
 " For more details see:
 " https://github.com/mottram/dotvim
-" TODO Custom Ultisnips? Do I really need Ultisnips?
 
 " =============================================================================
 " Setup
@@ -33,6 +32,10 @@ Bundle 'tpope/vim-fugitive'
 " https://github.com/tpope/vim-surround
 Bundle 'tpope/vim-surround'
 
+" Repeat vim-surround stuff with '.'
+" https://github.com/tpope/vim-repeat
+Bundle 'tpope/vim-repeat'
+
 " Visualise the undo tree
 " https://github.com/sjl/gundo.vim
 Bundle 'sjl/gundo.vim'
@@ -40,10 +43,6 @@ Bundle 'sjl/gundo.vim'
 " Pretty colours
 " https://github.com/altercation/vim-colors-solarized
 Bundle 'altercation/vim-colors-solarized'
-
-" Snippet expansion
-" https://github.com/SirVer/ultisnips
-Bundle 'SirVer/ultisnips'
 
 " Find files, open buffers, recently used, &c.
 " https://github.com/kien/ctrlp.vim
@@ -187,6 +186,9 @@ set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 " Ignore temp and backup files
 set wildignore+=*.swp,*~,._*
 
+" Speed up redrawing in some terminals
+set ttyfast
+
 " Colourscheme settings
 " On a TTY, use the miro8 colourscheme (see http://1tw.org/1deUzmR). If 256
 " colours are available, use Solarized dark
@@ -308,13 +310,8 @@ set smarttab
 set expandtab
 
 " Make folds persistent
-au BufWinLeave ?* mkview
-au BufWinEnter ?* silent loadview
-
-" Trigger UltiSnips with Tab
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+au BufWinLeave *.* mkview
+au BufWinEnter *.* silent loadview
 
 " Convert inline Markdown links to references with formd, and vice versa
 nmap <leader>fr :%! ~/bin/formd -r<CR>
