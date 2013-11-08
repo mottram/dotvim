@@ -100,6 +100,8 @@ Bundle 'maxbrunsfeld/vim-yankstack'
 " https://github.com/edsono/vim-matchit
 Bundle 'edsono/vim-matchit'
 
+Bundle 'airblade/vim-gitgutter'
+
 " =============================================================================
 " Filetypes
 " =============================================================================
