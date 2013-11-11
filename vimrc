@@ -100,6 +100,8 @@ Bundle 'maxbrunsfeld/vim-yankstack'
 " https://github.com/edsono/vim-matchit
 Bundle 'edsono/vim-matchit'
 
+" Shows a git diff in the gutter
+" https://github.com/airblade/vim-gitgutter
 Bundle 'airblade/vim-gitgutter'
 
 " =============================================================================
