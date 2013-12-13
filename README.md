@@ -30,3 +30,4 @@
 * [TComment](tomtom/tcomment_vim)
 * [Yankstack](https://github.com/maxbrunsfeld/vim-yankstack)
 * [Matchit](https://github.com/edsono/vim-matchit)
+* [Renamer](https://github.com/vim-scripts/renamer.vim)

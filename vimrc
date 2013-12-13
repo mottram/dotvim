@@ -104,6 +104,10 @@ Bundle 'edsono/vim-matchit'
 " https://github.com/airblade/vim-gitgutter
 Bundle 'airblade/vim-gitgutter'
 
+" Rename files
+" https://github.com/vim-scripts/renamer.vim
+Bundle 'vim-scripts/renamer.vim'
+
 " =============================================================================
 " Filetypes
 " =============================================================================
