@@ -22,91 +22,91 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Vundle must be managed by Vundle!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Git wrangling
 " https://github.com/tpope/vim-fugitive
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " Easy quoting/parenthesizing
 " https://github.com/tpope/vim-surround
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
 " Repeat vim-surround stuff with '.'
 " https://github.com/tpope/vim-repeat
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'
 
 " Visualise the undo tree
 " https://github.com/sjl/gundo.vim
-Bundle 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'
 
 " Pretty colours
 " https://github.com/altercation/vim-colors-solarized
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 
 " Find files, open buffers, recently used, &c.
 " https://github.com/kien/ctrlp.vim
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 " Text filtering and alignment
 " https://github.com/godlygeek/tabular
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 
 " Outliner mode
 " https://github.com/vimoutliner/vimoutliner
-Bundle 'vimoutliner/vimoutliner'
+Plugin 'vimoutliner/vimoutliner'
 
 " A fancy statusline
 " https://github.com/itchyny/lightline.vim
-Bundle 'itchyny/lightline.vim'
+Plugin 'itchyny/lightline.vim'
 
 " Shell command helper
 " https://github.com/sjl/clam.vim
-Bundle 'sjl/clam.vim'
+Plugin 'sjl/clam.vim'
 
 " Use tab for completions
 " https://github.com/ervandew/supertab
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
 " Filesystem sidebar
 " https://github.com/scrooloose/nerdtree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " Make NERDTree work independently of tabs
 " https://github.com/jistr/vim-nerdtree-tabs
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " Taskpaper syntax highlighting
 " https://github.com/davidoc/taskpaper.vim
-Bundle 'davidoc/taskpaper.vim'
+Plugin 'davidoc/taskpaper.vim'
 
 " Markdown syntax highlighting
 " https://github.com/tpope/vim-markdown
-Bundle 'tpope/vim-markdown'
+Plugin 'tpope/vim-markdown'
 
 " Preview Mardkown files in Marked
 " https://github.com/itspriddle/vim-marked
-Bundle 'itspriddle/vim-marked'
+Plugin 'itspriddle/vim-marked'
 
 " Toggle comments
 " https://github.com/tomtom/tcomment_vim
-Bundle 'tomtom/tcomment_vim'
+Plugin 'tomtom/tcomment_vim'
 
 " Clipboard history
 " https://github.com/maxbrunsfeld/vim-yankstack
-Bundle 'maxbrunsfeld/vim-yankstack'
+Plugin 'maxbrunsfeld/vim-yankstack'
 
 " Improved matching with %
 " https://github.com/edsono/vim-matchit
-Bundle 'edsono/vim-matchit'
+Plugin 'edsono/vim-matchit'
 
 " Shows a git diff in the gutter
 " https://github.com/airblade/vim-gitgutter
-Bundle 'airblade/vim-gitgutter'
+" Plugin 'airblade/vim-gitgutter'
 
 " Rename files
 " https://github.com/vim-scripts/renamer.vim
-Bundle 'vim-scripts/renamer.vim'
+Plugin 'vim-scripts/renamer.vim'
 
 " =============================================================================
 " Filetypes
@@ -221,6 +221,7 @@ endif
 
 " Don't open the NERDTree sidebar automatically in MacVim
 let g:nerdtree_tabs_open_on_gui_startup=0
+
 
 " Lightline statusline
 " See http://1tw.org/1buK2Sv
@@ -425,10 +426,30 @@ set undodir=~/.vim/undo
 
 
 " Simple statusline
-"   set statusline=%<%f\ 
-"   set statusline+=%w%h%m%r 
-"   set statusline+=%{fugitive#statusline()}
-"   set statusline+=\ [%{&ff}/%Y]  
-"   set statusline+=\ [%{getcwd()}]
-"   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+" set statusline=%<%f\ 
+" set statusline+=%w%h%m%r 
+" set statusline+=%{fugitive#statusline()}
+" set statusline+=\ [%{&ff}/%Y]  
+" set statusline+=\ [%{getcwd()}]
+" set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+
+"  " Airline statusline
+" set ttimeoutlen=50
+" let g:airline_powerline_fonts=1
+" let g:airline_left_sep='⮀'
+" let g:airline_right_sep='⮂'
+" let g:airline_detect_modified=1
+" let g:airline_detect_paste=1
+" if !exists('g:airline_symbols')
+" let g:airline_symbols = {}
 " endif
+" " old vim-powerline symbols
+" let g:airline_theme = "solarized"
+" let g:airline_left_sep = '⮀'
+" let g:airline_left_alt_sep = '⮁'
+" let g:airline_right_sep = '⮂'
+" let g:airline_right_alt_sep = '⮃'
+" let g:airline_symbols.branch = '⭠'
+" let g:airline_symbols.readonly = '⭤'
+" let g:airline_symbols.linenr = '⭡'
+" let g:airline_powerline_fonts = 1
