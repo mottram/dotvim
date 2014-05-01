@@ -362,25 +362,26 @@ set undodir=~/.vim/undo
 set noshowmode
 
 " Define statusline colours
-" TODO GUI colourscheme
+" TODO reorder User{1,2,3}
 " TODO chooser colours - e.g. when tab completing
-hi User1 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
-hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#dc322f
-hi User3 ctermbg=0 ctermfg=2
+" TODO ModeStatus should change bg colour?
+
+hi User1 ctermbg=0 ctermfg=2 guibg=#002b36 guifg=#859900
+hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
 
 set statusline=
-set statusline+=%3*
+set statusline+=%1*
 set statusline+=%<\  
 set statusline+=%{ModeStatus()}
 set statusline+=%{PasteStatus()}
-set statusline+=%1*
-set statusline+=%F\ 
-set statusline+=%{FileStatus()}\ 
-set statusline+=%{&ff}\ %Y
 set statusline+=%2*
+set statusline+=%F
+set statusline+=%{FileStatus()}\ 
+set statusline+=%{&ff}\ 
+set statusline+=%y\ 
 set statusline+=%=\  
 set statusline+=%{GitBranchStatus()}
-set statusline+=%3*
+set statusline+=%1*
 set statusline+=\ %l/%L\ 
 
 function! GitBranchStatus()
@@ -395,9 +396,9 @@ function! FileStatus()
   if &filetype == "help"
     return ''
   elseif &readonly
-    return '⭤'
+    return ' ⭤'
   elseif &modified
-    return '◘'
+    return ' ◘'
   else
     return ''
   endif
@@ -406,7 +407,7 @@ endfunction
 function! ModeStatus()
     redraw
     let l:mode = mode()
-    if     mode ==# "n"  | return "NORMAL "
+    if     mode ==# "n"  | return ""
     elseif mode ==# "i"  | return "INSERT "
     elseif mode ==# "R"  | return "REPLACE "
     elseif mode ==# "v"  | return "VISUAL "
