@@ -56,10 +56,6 @@ Plugin 'godlygeek/tabular'
 " https://github.com/vimoutliner/vimoutliner
 Plugin 'vimoutliner/vimoutliner'
 
-" A fancy statusline
-" https://github.com/itchyny/lightline.vim
-Plugin 'itchyny/lightline.vim'
-
 " Shell command helper
 " https://github.com/sjl/clam.vim
 Plugin 'sjl/clam.vim'
@@ -228,87 +224,6 @@ endif
 " Don't open the NERDTree sidebar automatically in MacVim
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-
-" Lightline statusline
-" See http://1tw.org/1buK2Sv
-
-if hostname() == 'mbp'
-
-let g:lightline = {
-      \ 'colorscheme': 'solarized_dark',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'readonly': 'MyReadonly',
-      \   'modified': 'MyModified',
-      \   'filename': 'MyFilename'
-      \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-      \ }
-
-function! MyModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! MyReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "⭤"
-  else
-    return ""
-  endif
-endfunction
-
-function! MyFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? '⭠ '._ : ''
-  endif
-  return ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-elseif hostname() == 'pest'
-
-let g:lightline = {
-      \ 'colorscheme': 'solarized_dark',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ }
-      \ }
-
-
-endif
-
 " =============================================================================
 " Text Editing, Formatting & Snippets
 " =============================================================================
@@ -442,10 +357,61 @@ set directory=~/.vim/temp
 set undofile
 set undodir=~/.vim/undo
 
-" Simple statusline
-" set statusline=%<%f\ 
-" set statusline+=%w%h%m%r 
-" set statusline+=%{fugitive#statusline()}
-" set statusline+=\ [%{&ff}/%Y]  
-" set statusline+=\ [%{getcwd()}]
-" set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+" Testing new statusline below:
+hi User1 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
+hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#dc322f
+hi User3 ctermbg=0 ctermfg=blue
+
+set statusline=
+set statusline+=%3*
+set statusline+=%<\  
+set statusline+=%{ModeStatus()}
+set statusline+=%{PasteStatus()}
+set statusline+=%1*
+set statusline+=%F\ 
+set statusline+=%{&ff}\ %Y
+set statusline+=%2*
+set statusline+=%=\  
+set statusline+=%{GitStatus()}
+set statusline+=\ %{FileStatus()}   
+set statusline+=\ %l/%L\ 
+
+function! GitStatus()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? '⭠ '._ : ''
+  endif
+  return ''
+endfunction
+
+function! FileStatus()
+  if &filetype == "help"
+    return ''
+  elseif &readonly
+    return '⭤'
+  elseif &modified
+    return '◘'
+  else
+    return ''
+  endif
+endfunction
+
+function! ModeStatus()
+    redraw
+    let l:mode = mode()
+    if     mode ==# "n"  | return ""
+    elseif mode ==# "i"  | return "INSERT "
+    elseif mode ==# "R"  | return "REPLACE "
+    elseif mode ==# "v"  | return "VISUAL "
+    elseif mode ==# "V"  | return "V-LINE "
+    elseif mode ==# "" | return "V-BLOCK "
+    else                 | return l:mode
+    endif
+endfunction
+
+function! PasteStatus()
+    if &paste
+        return '[PASTE] '
+    en
+        return ''
+endfunction
