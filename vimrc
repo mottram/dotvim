@@ -102,11 +102,16 @@ Plugin 'edsono/vim-matchit'
 
 " Shows a git diff in the gutter
 " https://github.com/airblade/vim-gitgutter
-" Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 
 " Rename files
 " https://github.com/vim-scripts/renamer.vim
 Plugin 'vim-scripts/renamer.vim'
+
+" Snippets
+" https://github.com/SirVer/ultisnips
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " =============================================================================
 " Filetypes
@@ -121,8 +126,9 @@ set encoding=utf-8 nobomb
 " Detect filetypes
 filetype indent plugin on
 
-" All files in the Notes directory  are Markdown
+" All files in the Notes and Tumblr directories  are Markdown
 au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
+au BufRead,BufNewfile ~/.local/share/tumblr/* set filetype=markdown
 
 " All files in the Taskpaper directory are Taskpaper
 au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
@@ -329,6 +335,11 @@ nmap <leader>fi :%! ~/bin/formd -i<CR>
 " Ask before closing unsaved files, &c.
 set confirm
 
+" Trigger UltiSnips with Tab
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 " =============================================================================
 " Copy & Paste
 " =============================================================================
@@ -389,6 +400,13 @@ syntax on
 " Highlight matching brackets
 set showmatch
 
+" GitGutter colour settings
+highlight clear SignColumn
+highlight GitGutterAdd ctermbg=0
+highlight GitGutterChange ctermbg=8
+highlight GitGutterDelete ctermbg=8
+highlight GitGutterChangeDelete ctermbg=8
+
 " =============================================================================
 " Spelling & Dictionary
 " =============================================================================
@@ -424,7 +442,6 @@ set directory=~/.vim/temp
 set undofile
 set undodir=~/.vim/undo
 
-
 " Simple statusline
 " set statusline=%<%f\ 
 " set statusline+=%w%h%m%r 
@@ -432,24 +449,3 @@ set undodir=~/.vim/undo
 " set statusline+=\ [%{&ff}/%Y]  
 " set statusline+=\ [%{getcwd()}]
 " set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
-
-"  " Airline statusline
-" set ttimeoutlen=50
-" let g:airline_powerline_fonts=1
-" let g:airline_left_sep='⮀'
-" let g:airline_right_sep='⮂'
-" let g:airline_detect_modified=1
-" let g:airline_detect_paste=1
-" if !exists('g:airline_symbols')
-" let g:airline_symbols = {}
-" endif
-" " old vim-powerline symbols
-" let g:airline_theme = "solarized"
-" let g:airline_left_sep = '⮀'
-" let g:airline_left_alt_sep = '⮁'
-" let g:airline_right_sep = '⮂'
-" let g:airline_right_alt_sep = '⮃'
-" let g:airline_symbols.branch = '⭠'
-" let g:airline_symbols.readonly = '⭤'
-" let g:airline_symbols.linenr = '⭡'
-" let g:airline_powerline_fonts = 1
