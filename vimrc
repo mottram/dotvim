@@ -358,9 +358,15 @@ set undofile
 set undodir=~/.vim/undo
 
 " Testing new statusline below:
+" Disable showmode
+set noshowmode
+
+" Define statusline colours
+" TODO GUI colourscheme
+" TODO chooser colours - e.g. when tab completing
 hi User1 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
 hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#dc322f
-hi User3 ctermbg=0 ctermfg=blue
+hi User3 ctermbg=0 ctermfg=2
 
 set statusline=
 set statusline+=%3*
@@ -369,17 +375,18 @@ set statusline+=%{ModeStatus()}
 set statusline+=%{PasteStatus()}
 set statusline+=%1*
 set statusline+=%F\ 
+set statusline+=%{FileStatus()}\ 
 set statusline+=%{&ff}\ %Y
 set statusline+=%2*
 set statusline+=%=\  
-set statusline+=%{GitStatus()}
-set statusline+=\ %{FileStatus()}   
+set statusline+=%{GitBranchStatus()}
+set statusline+=%3*
 set statusline+=\ %l/%L\ 
 
-function! GitStatus()
+function! GitBranchStatus()
   if exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? '⭠ '._ : ''
+    return strlen(_) ? ''._ : ''
   endif
   return ''
 endfunction
@@ -399,7 +406,7 @@ endfunction
 function! ModeStatus()
     redraw
     let l:mode = mode()
-    if     mode ==# "n"  | return ""
+    if     mode ==# "n"  | return "NORMAL "
     elseif mode ==# "i"  | return "INSERT "
     elseif mode ==# "R"  | return "REPLACE "
     elseif mode ==# "v"  | return "VISUAL "
