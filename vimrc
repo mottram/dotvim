@@ -210,7 +210,7 @@ if &term == "linux"
     colorscheme miro8
 else
     set t_Co=256
-    set background=dark
+    set background=light
     colorscheme solarized
 endif
 
@@ -224,13 +224,9 @@ if has("gui_running")
     set guioptions+=c
 endif
 
-" Change CursorLine when in insert mode, terminal only
-autocmd InsertEnter * highlight CursorLine ctermbg=black ctermfg=red
-autocmd InsertLeave * highlight  CursorLine ctermbg=0 ctermfg=none
-
 " Highlighting for StatusLine, WildMenu
-highlight StatusLine ctermbg=2 ctermfg=0
-highlight WildMenu ctermbg=7 ctermfg=0
+" highlight StatusLine ctermbg=0 ctermfg=1
+" highlight WildMenu ctermbg=1 ctermfg=0
 
 " Don't open the NERDTree sidebar automatically in MacVim
 let g:nerdtree_tabs_open_on_gui_startup=0
@@ -328,10 +324,10 @@ set showmatch
 
 " GitGutter colour settings
 highlight clear SignColumn
-highlight GitGutterAdd ctermbg=0
-highlight GitGutterChange ctermbg=8
-highlight GitGutterDelete ctermbg=8
-highlight GitGutterChangeDelete ctermbg=8
+highlight GitGutterAddLine ctermbg=LightGray
+highlight GitGutterChangeLine ctermbg=LightGray
+highlight GitGutterDeleteLine ctermbg=LightGray
+highlight GitGutterChangeDeleteLine ctermbg=LightGray
 
 " =============================================================================
 " Spelling & Dictionary
@@ -379,22 +375,27 @@ set noshowmode
 " TODO ModeStatus should change bg colour?
 
 " Colourschemes for statusline
-hi User1 ctermbg=0 ctermfg=2 guibg=#002b36 guifg=#859900
-hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
+" hi User1 ctermbg=0 ctermfg=2 guibg=#002b36 guifg=#859900
+" hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
+hi User1 ctermbg=LightGray ctermfg=DarkGreen
+hi User2 ctermbg=LightGray ctermfg=DarkGray
+hi User3 ctermbg=LightGray ctermfg=DarkGreen
 
 set statusline=
-set statusline+=%1*
-set statusline+=%<\  
+set statusline+=%3*
+set statusline+=%<
+set statusline+=%1*\ 
 set statusline+=%{ModeStatus()}
 set statusline+=%{PasteStatus()}
 set statusline+=%2*
-set statusline+=%F
+set statusline+=\ %F
 set statusline+=%{FileStatus()}\ 
-set statusline+=%{&ff}\ 
-set statusline+=%y\ 
+set statusline+=%{&filetype}\ 
+set statusline+=%{&fileformat}\ 
+set statusline+=%{&fileencoding}
 set statusline+=%=\  
 set statusline+=%{GitBranchStatus()}
-set statusline+=%1*
+set statusline+=%3*
 set statusline+=\ %l/%L\ 
 
 function! GitBranchStatus()
@@ -420,11 +421,11 @@ endfunction
 function! ModeStatus()
     redraw
     let l:mode = mode()
-    if     mode ==# "n"  | return ""
-    elseif mode ==# "i"  | return "INSERT "
-    elseif mode ==# "R"  | return "REPLACE "
-    elseif mode ==# "v"  | return "VISUAL "
-    elseif mode ==# "V"  | return "V-LINE "
+    if     mode ==# "n"  | exec 'hi User1 ctermbg=LightGray ctermfg=DarkGreen' | return " "
+    elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkRed ctermfg=LightGray' | return "INSERT "
+    elseif mode ==# "R"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "REPLACE "
+    elseif mode ==# "v"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "VISUAL "
+    elseif mode ==# "V"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "V-LINE "
     elseif mode ==# "" | return "V-BLOCK "
     else                 | return l:mode
     endif
@@ -432,7 +433,13 @@ endfunction
 
 function! PasteStatus()
     if &paste
-        return '[PASTE] '
+        exec 'hi User1 ctermbg=DarkGreen ctermfg=LightGray' | return "[PASTE] "
     en
         return ''
 endfunction
+
+" TODO add following to install Vundle automatically
+" See http://1tw.org/1ue3Apa
+" if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
+"   !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+" endif
