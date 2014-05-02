@@ -366,6 +366,9 @@ set noshowmode
 " TODO chooser colours - e.g. when tab completing
 " TODO ModeStatus should change bg colour?
 
+highlight StatusLine ctermbg=2 ctermfg=0
+highlight WildMenu ctermbg=7 ctermfg=0
+
 hi User1 ctermbg=0 ctermfg=2 guibg=#002b36 guifg=#859900
 hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
 
