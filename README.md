@@ -19,7 +19,6 @@
 * [CtrlP](https://github.com/kien/ctrlp.vim)
 * [Tabular](https://github.com/godlygeek/tabular)
 * [Vimoutliner](https://github.com/vimoutliner/vimoutliner)
-* [Lightline](https://github.com/itchyny/lightline.vim)
 * [Clam](https://github.com/sjl/clam.vim)
 * [Supertab](https://github.com/scrooloose/nerdtree)
 * [NERDTree](https://github.com/scrooloose/nerdtree)
