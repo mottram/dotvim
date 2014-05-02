@@ -199,6 +199,9 @@ set wildignore+=*.swp,*~,._*
 " Speed up redrawing in some terminals
 set ttyfast
 
+" Speed up pause when entering/leaving insert mode
+set ttimeoutlen=40
+
 " Colourscheme settings
 " On a TTY, use the miro8 colourscheme (see http://1tw.org/1deUzmR). If 256
 " colours are available, use Solarized dark
@@ -220,6 +223,14 @@ if has("gui_running")
 " Use text dialogs instead of GUI popups
     set guioptions+=c
 endif
+
+" Change CursorLine when in insert modede
+autocmd InsertEnter * highlight CursorLine ctermbg=124 ctermfg=none
+autocmd InsertLeave * highlight  CursorLine ctermbg=0 ctermfg=none
+
+" Nicer highlighting for StatusLine, WildMenu
+highlight StatusLine ctermbg=2 ctermfg=0
+highlight WildMenu ctermbg=7 ctermfg=0
 
 " Don't open the NERDTree sidebar automatically in MacVim
 let g:nerdtree_tabs_open_on_gui_startup=0
@@ -362,13 +373,12 @@ set undodir=~/.vim/undo
 set noshowmode
 
 " Define statusline colours
-" TODO reorder User{1,2,3}
+" TODO add gui stuff to all highlights, &c.
+" TODO convert colour names to numbers
 " TODO chooser colours - e.g. when tab completing
 " TODO ModeStatus should change bg colour?
 
-highlight StatusLine ctermbg=2 ctermfg=0
-highlight WildMenu ctermbg=7 ctermfg=0
-
+" Colourschemes for statusline
 hi User1 ctermbg=0 ctermfg=2 guibg=#002b36 guifg=#859900
 hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
 
