@@ -224,11 +224,11 @@ if has("gui_running")
     set guioptions+=c
 endif
 
-" Change CursorLine when in insert modede
-autocmd InsertEnter * highlight CursorLine ctermbg=124 ctermfg=none
+" Change CursorLine when in insert mode, terminal only
+autocmd InsertEnter * highlight CursorLine ctermbg=black ctermfg=red
 autocmd InsertLeave * highlight  CursorLine ctermbg=0 ctermfg=none
 
-" Nicer highlighting for StatusLine, WildMenu
+" Highlighting for StatusLine, WildMenu
 highlight StatusLine ctermbg=2 ctermfg=0
 highlight WildMenu ctermbg=7 ctermfg=0
 
