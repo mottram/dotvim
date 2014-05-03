@@ -224,10 +224,6 @@ if has("gui_running")
     set guioptions+=c
 endif
 
-" Highlighting for StatusLine, WildMenu
-" highlight StatusLine ctermbg=0 ctermfg=1
-" highlight WildMenu ctermbg=1 ctermfg=0
-
 " Don't open the NERDTree sidebar automatically in MacVim
 let g:nerdtree_tabs_open_on_gui_startup=0
 
@@ -370,16 +366,19 @@ set noshowmode
 
 " Define statusline colours
 " TODO add gui stuff to all highlights, &c.
-" TODO convert colour names to numbers
+" TODO convert colour names to numbers?
 " TODO chooser colours - e.g. when tab completing
-" TODO ModeStatus should change bg colour?
 
 " Colourschemes for statusline
-" hi User1 ctermbg=0 ctermfg=2 guibg=#002b36 guifg=#859900
-" hi User2 ctermbg=0 ctermfg=green guibg=#002b36 guifg=#839496
 hi User1 ctermbg=LightGray ctermfg=DarkGreen
 hi User2 ctermbg=LightGray ctermfg=DarkGray
 hi User3 ctermbg=LightGray ctermfg=DarkGreen
+
+" Override Solarized
+highlight! StatusLine ctermbg=DarkGreen ctermfg=LightGray
+highlight! WildMenu ctermbg=LightGray ctermfg=DarkGreen
+highlight! Search ctermfg=DarkGreen
+highlight! IncSearch ctermfg=DarkGreen
 
 set statusline=
 set statusline+=%3*
@@ -422,7 +421,7 @@ function! ModeStatus()
     redraw
     let l:mode = mode()
     if     mode ==# "n"  | exec 'hi User1 ctermbg=LightGray ctermfg=DarkGreen' | return " "
-    elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkRed ctermfg=LightGray' | return "INSERT "
+    elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkGreen ctermfg=LightGray' | return "INSERT "
     elseif mode ==# "R"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "REPLACE "
     elseif mode ==# "v"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "VISUAL "
     elseif mode ==# "V"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "V-LINE "
@@ -437,9 +436,3 @@ function! PasteStatus()
     en
         return ''
 endfunction
-
-" TODO add following to install Vundle automatically
-" See http://1tw.org/1ue3Apa
-" if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
-"   !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-" endif
