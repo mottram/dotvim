@@ -148,7 +148,8 @@ set hidden
 set number
 
 " Show relative line numbers (except for the current line)
-set relativenumber
+" TODO I seem to be getting annoyed by this - toggle w/ keybinding?
+" set relativenumber
 
 " Highlight the current line
 set cursorline
@@ -210,7 +211,7 @@ if &term == "linux"
     colorscheme miro8
 else
     set t_Co=256
-    set background=light
+    set background=dark
     colorscheme solarized
 endif
 
@@ -269,11 +270,6 @@ call yankstack#setup()
 " Cycle through Yankstack's clipboard history
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
-" Set the macmeta option to enable Yankstack keybindings in MacVim
-if has("gui_running")
-    set macmeta
-endif
 
 " Yank to the end of the line with Y
 map Y y$
@@ -370,15 +366,15 @@ set noshowmode
 " TODO chooser colours - e.g. when tab completing
 
 " Colourschemes for statusline
-hi User1 ctermbg=LightGray ctermfg=DarkGreen
-hi User2 ctermbg=LightGray ctermfg=DarkGray
-hi User3 ctermbg=LightGray ctermfg=DarkGreen
+highlight User1 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900
+highlight User2 ctermbg=Black ctermfg=DarkGray guibg=#002b36 guifg=#657b83
+highlight User3 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900 
 
-" Override Solarized
-highlight! StatusLine ctermbg=DarkGreen ctermfg=LightGray
-highlight! WildMenu ctermbg=LightGray ctermfg=DarkGreen
-highlight! Search ctermfg=DarkGreen
-highlight! IncSearch ctermfg=DarkGreen
+" Override Solarized colours to make the StatusLine and WildMenu prettier
+highlight! StatusLine ctermbg=DarkGreen ctermfg=Black guibg=#859900 guifg=#002b36
+highlight! WildMenu ctermbg=Black ctermfg=DarkGreen guibg=#002b36 guifg=#859900
+highlight! Search ctermfg=DarkGray guifg=#93a1a1
+highlight! IncSearch ctermfg=DarkGray guifg=#93a1a1
 
 set statusline=
 set statusline+=%3*
@@ -397,6 +393,7 @@ set statusline+=%{GitBranchStatus()}
 set statusline+=%3*
 set statusline+=\ %l/%L\ 
 
+" Git branch indicator
 function! GitBranchStatus()
   if exists("*fugitive#head")
     let _ = fugitive#head()
@@ -405,6 +402,7 @@ function! GitBranchStatus()
   return ''
 endfunction
 
+" File status indicator
 function! FileStatus()
   if &filetype == "help"
     return ''
@@ -417,19 +415,23 @@ function! FileStatus()
   endif
 endfunction
 
+" Colourful mode indicator
+" Borrowed from http://1tw.org/Rh96Is
 function! ModeStatus()
     redraw
     let l:mode = mode()
-    if     mode ==# "n"  | exec 'hi User1 ctermbg=LightGray ctermfg=DarkGreen' | return " "
-    elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkGreen ctermfg=LightGray' | return "INSERT "
-    elseif mode ==# "R"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "REPLACE "
-    elseif mode ==# "v"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "VISUAL "
-    elseif mode ==# "V"  | exec 'hi User1 ctermbg=DarkGray ctermfg=LightGray' | return "V-LINE "
-    elseif mode ==# "" | return "V-BLOCK "
+    if     mode ==# "n"  | exec 'hi User1 ctermbg=Black ctermfg=DarkGreen guibg=#002b36 guifg=#859900' | return " "
+    elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkGreen ctermfg=LightGray guibg=#859900 guifg=#eee8d5' | return "INSERT "
+    elseif mode ==# "v"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=LightGray guibg=#d33682 guifg=#eee8d5' | return "VISUAL "
+    elseif mode ==# "V"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=LightGray guibg=#d33682 guifg=#eee8d5' | return "V-LINE "
+    elseif mode ==# "" | exec 'hi User1 ctermbg=DarkMagenta ctermfg=LightGray guibg=#d33682 guifg=#eee8d5' | return "V-BLOCK "
+    elseif mode ==# "R"  | exec 'hi User1 ctermbg=DarkCyan ctermfg=LightGray guibg=#2aa198 guifg=#eee8d5' | return "REPLACE "
     else                 | return l:mode
     endif
 endfunction
 
+" paste mode indicator
+" TODO remove exec?
 function! PasteStatus()
     if &paste
         exec 'hi User1 ctermbg=DarkGreen ctermfg=LightGray' | return "[PASTE] "
