@@ -431,10 +431,9 @@ function! ModeStatus()
 endfunction
 
 " paste mode indicator
-" TODO remove exec?
 function! PasteStatus()
     if &paste
-        exec 'hi User1 ctermbg=DarkGreen ctermfg=LightGray' | return "[PASTE] "
+        return "[PASTE] "
     en
         return ''
 endfunction
