@@ -6,7 +6,7 @@
 2. `mkdir -p ~/.vim/{bundle,backup,temp,undo,view}`
 3. `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
 4. `ln -s ~/.vim/vimrc ~/.vimrc`
-5. `vim +BundleInstall +qall`
+5. `vim +PluginInstall +qall`
 
 ### Plugins
 
