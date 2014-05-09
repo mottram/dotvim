@@ -1,7 +1,10 @@
 " Jack Mottram's ~/.vimrc
 " For more details see:
 " https://github.com/mottram/dotvim
-
+" TODO Use let: to define colours, use in ModeStatus function and StatusLine
+" TODO Single letter replace mode indicator (r) should match replace mode (R)
+" TODO I seem to be getting annoyed by relativenumber - toggle w/ keybinding?
+" TODO Tumblr posting should be a script (convert shell aliases)
 " =============================================================================
 " Setup
 " =============================================================================
@@ -148,7 +151,6 @@ set hidden
 set number
 
 " Show relative line numbers (except for the current line)
-" TODO I seem to be getting annoyed by this - toggle w/ keybinding?
 " set relativenumber
 
 " Highlight the current line
@@ -178,6 +180,9 @@ let g:ctrlp_map = '<C-X>'
 
 " Enable mouse support (heresy!)
 set mouse=a
+
+" Don't show the mode
+set noshowmode
 
 " Show incomplete commands 
 set showcmd
@@ -271,6 +276,9 @@ call yankstack#setup()
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
+" Show yanks
+nmap <leader>y :Yanks<CR>
+
 " Yank to the end of the line with Y
 map Y y$
 
@@ -338,7 +346,7 @@ map <F5> :set nospell<CR>
 map <F7> :set complete+=k<CR>
 
 " ... and off
-map <S-F7> :set complete=-k<CR>
+map <S-F7> :set complete-=k<CR>
 
 " =============================================================================
 " Backups & Undo
@@ -356,19 +364,21 @@ set directory=~/.vim/temp
 set undofile
 set undodir=~/.vim/undo
 
-" Testing new statusline below:
-" Disable showmode
-set noshowmode
+" =============================================================================
+" Testing & Temporary
+" =============================================================================
 
-" Define statusline colours
-" TODO add gui stuff to all highlights, &c.
-" TODO convert colour names to numbers?
-" TODO chooser colours - e.g. when tab completing
+" Weblog posting
 
-" Colourschemes for statusline
+nmap <F11> :!~/bin/otw-draft.sh %<CR><CR>
+nmap <S-F11> :!~/bin/otw-queue.sh %<CR><CR>
+
+" New statusline, no plugins required.
+" Define default mode status/StatusLine colours
 highlight User1 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900
 highlight User2 ctermbg=Black ctermfg=DarkGray guibg=#002b36 guifg=#657b83
-highlight User3 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900 
+highlight User3 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900
+highlight User4 ctermbg=Black ctermfg=Red guibg=#073642 guifg=#dc322f
 
 " Override Solarized colours to make the StatusLine and WildMenu prettier
 highlight! StatusLine ctermbg=DarkGreen ctermfg=Black guibg=#859900 guifg=#002b36
@@ -384,7 +394,9 @@ set statusline+=%{ModeStatus()}
 set statusline+=%{PasteStatus()}
 set statusline+=%2*
 set statusline+=\ %F
+set statusline+=%4*
 set statusline+=%{FileStatus()}\ 
+set statusline+=%3*
 set statusline+=%{&filetype}\ 
 set statusline+=%{&fileformat}\ 
 set statusline+=%{&fileencoding}
@@ -407,9 +419,9 @@ function! FileStatus()
   if &filetype == "help"
     return ''
   elseif &readonly
-    return ' ⭤'
+    return ' ro'
   elseif &modified
-    return ' ◘'
+    return ' m'
   else
     return ''
   endif
@@ -430,7 +442,7 @@ function! ModeStatus()
     endif
 endfunction
 
-" paste mode indicator
+" Paste mode indicator
 function! PasteStatus()
     if &paste
         return "[PASTE] "
