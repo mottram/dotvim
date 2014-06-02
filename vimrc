@@ -112,6 +112,10 @@ Plugin 'vim-scripts/renamer.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
+" Todo.txt
+" https://github.com/freitass/todo.txt-vim
+Plugin 'freitass/todo.txt-vim'
+
 " =============================================================================
 " Filetypes
 " =============================================================================
@@ -128,6 +132,9 @@ filetype indent plugin on
 " All files in the Notes and Tumblr directories  are Markdown
 au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
 au BufRead,BufNewfile ~/.local/share/tumblr/* set filetype=markdown
+
+" All txt files in the Todo.txt directory are Todo.txt format
+au BufRead,BufNewfile ~/Dropbox/todo/*.txt set filetype=todo
 
 " All files in the Taskpaper directory are Taskpaper
 au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
