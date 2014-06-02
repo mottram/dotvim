@@ -32,3 +32,4 @@
 * [GitGutter](https://github.com/airblade/vim-gitgutter)
 * [Renamer](https://github.com/vim-scripts/renamer.vim)
 * [UltiSnips](https://github.com/SirVer/ultisnips) (with [vim-snippets](https://github.com/honza/vim-snippets))
+* [Todo.txt](https://github.com/freitass/todo.txt-vim)
