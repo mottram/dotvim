@@ -176,6 +176,9 @@ set showtabline=2
 " Applies when opening with vim -p
 set tabpagemax=20
 
+" List and switch between buffers with ,l
+nnoremap <leader>l :ls <CR>:b<space>  
+
 " Toggle the NERDTree sidebar with <F2>
 map <F2> :NERDTreeTabsToggle<CR>
 
