@@ -73,6 +73,9 @@ Plugin 'honza/vim-snippets'
 " Todo.txt
 " https://github.com/freitass/todo.txt-vim
 Plugin 'freitass/todo.txt-vim'
+" Most Recently Used files
+" https://github.com/yegappan/mru
+Plugin 'yegappan/mru'
 " =============================================================================
 " Filetypes
 " =============================================================================
