@@ -17,10 +17,10 @@ set nomodeline
 " =============================================================================
 " Load plugins with Vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 " Vundle must be managed by Vundle!
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 " Git wrangling
 " https://github.com/tpope/vim-fugitive
 Plugin 'tpope/vim-fugitive'
@@ -76,6 +76,7 @@ Plugin 'freitass/todo.txt-vim'
 " Most Recently Used files
 " https://github.com/yegappan/mru
 Plugin 'yegappan/mru'
+call vundle#end()
 " =============================================================================
 " Filetypes
 " =============================================================================
