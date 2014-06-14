@@ -22,6 +22,7 @@ call vundle#begin()
 " Vundle must be managed by Vundle!
 Plugin 'gmarik/Vundle.vim'
 Plugin 'justinmk/vim-sneak'
+Plugin 'nelstrom/vim-markdown-folding'
 " Git wrangling
 " https://github.com/tpope/vim-fugitive
 Plugin 'tpope/vim-fugitive'
@@ -338,6 +339,3 @@ function! PasteStatus()
     en
         return ''
 endfunction
-
-
-
