@@ -4,7 +4,7 @@
 " TODO Use let: to define colours, use in ModeStatus function and StatusLine
 " TODO Single letter replace mode indicator (r) should match replace mode (R)
 " TODO I seem to be getting annoyed by relativenumber - toggle w/ keybinding?
-" TODO Tumblr posting should be a script (convert shell aliases)
+" TODO Check whether I need all those suffixesadd filetypes
 " =============================================================================
 " Setup
 " =============================================================================
@@ -128,6 +128,7 @@ set showcmd
 " Remember plenty of past commands
 set history=1000
 " Improve tab command completion
+set wildmode=list:full
 set wildmenu
 " Ignore DS_Store files
 set wildignore+=.DS_Store
@@ -135,10 +136,20 @@ set wildignore+=.DS_Store
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 " Ignore temp and backup files
 set wildignore+=*.swp,*~,._*
+" Use tree view in netrw
+let g:netrw_liststyle=3
+" Don't show the banner in netrw
+let g:netrw_banner=0
+" Find files in the current directory, current *working* directory and below
+set path=.,**
+" Tell find, gf which filetypes to look for
+set suffixesadd+=.markdown,.md,.py,.txt,.sh,.rb,.js,.c,.h,.go,.html,.css
 " Speed up redrawing in some terminals
 set ttyfast
 " Speed up pause when entering/leaving insert mode
 set ttimeoutlen=40
+" Always show a menu when completing in insert mode
+set completeopt+=menuone
 " Colourscheme settings
 " On a TTY, use the miro8 colourscheme (see http://1tw.org/1deUzmR). If 256
 " colours are available, use Solarized dark
