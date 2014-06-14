@@ -30,9 +30,6 @@ Plugin 'tpope/vim-surround'
 " Repeat vim-surround stuff with '.'
 " https://github.com/tpope/vim-repeat
 Plugin 'tpope/vim-repeat'
-" Visualise the undo tree
-" https://github.com/sjl/gundo.vim
-Plugin 'sjl/gundo.vim'
 " Pretty colours
 " https://github.com/altercation/vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
@@ -133,8 +130,6 @@ set tabpagemax=20
 nnoremap <leader>l :ls <CR>:b<space>  
 " Toggle the NERDTree sidebar with <F2>
 map <F2> :NERDTreeTabsToggle<CR>
-" Toggle Gundo's undo tree with <F3>
-nnoremap <F3> :GundoToggle<CR>
 " Open the CtrlP search pane with Control+X
 let g:ctrlp_map = '<C-X>'
 " Enable mouse support (heresy!)
