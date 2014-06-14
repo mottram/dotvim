@@ -13,7 +13,7 @@ set nocompatible
 " Turn off modelines
 set nomodeline
 " =============================================================================
-" Plugins
+" Plugins 
 " =============================================================================
 " Load plugins with Vundle
 filetype off
@@ -21,6 +21,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Vundle must be managed by Vundle!
 Plugin 'gmarik/Vundle.vim'
+Plugin 'justinmk/vim-sneak'
 " Git wrangling
 " https://github.com/tpope/vim-fugitive
 Plugin 'tpope/vim-fugitive'
@@ -42,9 +43,6 @@ Plugin 'ervandew/supertab'
 " Taskpaper syntax highlighting
 " https://github.com/davidoc/taskpaper.vim
 Plugin 'davidoc/taskpaper.vim'
-" Markdown syntax highlighting
-" https://github.com/tpope/vim-markdown
-Plugin 'tpope/vim-markdown'
 " Preview Mardkown files in Marked
 " https://github.com/itspriddle/vim-marked
 Plugin 'itspriddle/vim-marked'
@@ -79,6 +77,8 @@ set ffs=unix,mac
 set encoding=utf-8 nobomb
 " Detect filetypes
 filetype indent plugin on
+" If a file is changed externally, reload it
+set autoread
 " All files in the Notes and Tumblr directories  are Markdown
 au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
 au BufRead,BufNewfile ~/.local/share/tumblr/* set filetype=markdown
@@ -138,7 +138,7 @@ let g:netrw_liststyle=3
 " Don't show the banner in netrw
 let g:netrw_banner=0
 " Find files in the current directory, current *working* directory and below
-set path=.,**
+set path=**
 " Tell find, gf which filetypes to look for
 set suffixesadd+=.markdown,.md,.py,.txt,.sh,.rb,.js,.c,.h,.go,.html,.css
 " Speed up redrawing in some terminals
@@ -224,6 +224,11 @@ endfunction
 call MapCR()
 " Highlight last search term with ,hl
 nnoremap <leader>hl :set hlsearch<cr>
+" Search and move with Sneak
+nmap s <Plug>(SneakStreak)
+nmap S <Plug>(SneakStreakBackward)
+xmap s <Plug>Sneak_s
+xmap S <Plug>Sneak_S
 " Enable syntax highlighting
 syntax on
 " Highlight matching brackets
@@ -336,40 +341,5 @@ function! PasteStatus()
         return ''
 endfunction
 
-" Convert vimoutliner forrmat to Markdown
-function! Vomd()
-  let lines = []
-  let was_body = 0
-  for line in getline(1,'$')
-    if line =~ '^\t*[^:\t]'
-      let indent_level = len(matchstr(line, '^\t*'))
-      if was_body " <= remove this line to have body lines separated
-        call add(lines, '')
-      endif " <= remove this line to have body lines separated
-      call add(lines, substitute(line, '^\(\t*\)\([^:\t].*\)', '\=repeat("#", indent_level + 1)." ".submatch(2)', ''))
-      call add(lines, '')
-      let was_body = 0
-    else
-      call add(lines, substitute(line, '^\t*: ', '', ''))
-      let was_body = 1
-    endif
-  endfor
-  silent %d _
-  call setline(1, lines)
-endfunction
-function! Mdvo()
-  let lines = []
-  for line in getline(1,'$')
-    if line =~ '^\s*$'
-      continue
-    endif
-    if line =~ '^#\+'
-      let indent_level = len(matchstr(line, '^#\+')) - 1
-      call add(lines, substitute(line, '^#\(#*\) ', repeat("\<Tab>", indent_level), ''))
-    else
-      call add(lines, substitute(line, '^', repeat("\<Tab>", indent_level) . ': ', ''))
-    endif
-  endfor
-  silent %d _
-  call setline(1, lines)
-endfunction
+
+
