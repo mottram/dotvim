@@ -33,9 +33,6 @@ Plugin 'tpope/vim-repeat'
 " Pretty colours
 " https://github.com/altercation/vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
-" Find files, open buffers, recently used, &c.
-" https://github.com/kien/ctrlp.vim
-Plugin 'kien/ctrlp.vim'
 " Text filtering and alignment
 " https://github.com/godlygeek/tabular
 Plugin 'godlygeek/tabular'
@@ -119,8 +116,6 @@ set showtabline=2
 set tabpagemax=20
 " List and switch between buffers with ,l
 nnoremap <leader>l :ls <CR>:b<space>  
-" Open the CtrlP search pane with Control+X
-let g:ctrlp_map = '<C-X>'
 " Enable mouse support (heresy!)
 set mouse=a
 " Don't show the mode
