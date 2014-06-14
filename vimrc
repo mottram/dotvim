@@ -42,9 +42,6 @@ Plugin 'godlygeek/tabular'
 " Outliner mode
 " https://github.com/vimoutliner/vimoutliner
 Plugin 'vimoutliner/vimoutliner'
-" Shell command helper
-" https://github.com/sjl/clam.vim
-Plugin 'sjl/clam.vim'
 " Use tab for completions
 " https://github.com/ervandew/supertab
 Plugin 'ervandew/supertab'
