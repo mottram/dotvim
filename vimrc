@@ -118,7 +118,10 @@ set showtabline=2
 " Applies when opening with vim -p
 set tabpagemax=20
 " List and switch between buffers with ,l
-nnoremap <leader>l :ls <CR>:b<space>  
+nnoremap <leader>l :ls <CR>:b<space>
+" Switch buffers with PageUp/PageDown (fn + up/down arrows on the Mac)
+nnoremap <PageUp> :bprevious<CR>
+nnoremap <PageDown> :bnext<CR>
 " Enable mouse support (heresy!)
 set mouse=a
 " Don't show the mode
@@ -128,7 +131,7 @@ set showcmd
 " Remember plenty of past commands
 set history=1000
 " Improve tab command completion
-set wildmode=list:full
+set wildmode=full
 set wildmenu
 " Ignore DS_Store files
 set wildignore+=.DS_Store
