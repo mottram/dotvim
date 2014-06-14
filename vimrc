@@ -98,8 +98,6 @@ let gmapleader=","
 set hidden
 " Show line numbers
 set number
-" Show relative line numbers (except for the current line)
-" set relativenumber
 " Highlight the current line
 set cursorline
 " Always show the statusline
