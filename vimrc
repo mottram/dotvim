@@ -67,8 +67,8 @@ Plugin 'tpope/vim-markdown'
 " https://github.com/itspriddle/vim-marked
 Plugin 'itspriddle/vim-marked'
 " Toggle comments
-" https://github.com/tomtom/tcomment_vim
-Plugin 'tomtom/tcomment_vim'
+" https://github.com/tpope/vim-commentary
+Plugin 'tpope/vim-commentary'
 " Clipboard history
 " https://github.com/maxbrunsfeld/vim-yankstack
 Plugin 'maxbrunsfeld/vim-yankstack'
@@ -351,6 +351,7 @@ function! PasteStatus()
     en
         return ''
 endfunction
+
 " Convert vimoutliner forrmat to Markdown
 function! Vomd()
   let lines = []
