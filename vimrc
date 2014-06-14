@@ -45,12 +45,6 @@ Plugin 'vimoutliner/vimoutliner'
 " Use tab for completions
 " https://github.com/ervandew/supertab
 Plugin 'ervandew/supertab'
-" Filesystem sidebar
-" https://github.com/scrooloose/nerdtree
-Plugin 'scrooloose/nerdtree'
-" Make NERDTree work independently of tabs
-" https://github.com/jistr/vim-nerdtree-tabs
-Plugin 'jistr/vim-nerdtree-tabs'
 " Taskpaper syntax highlighting
 " https://github.com/davidoc/taskpaper.vim
 Plugin 'davidoc/taskpaper.vim'
@@ -125,8 +119,6 @@ set showtabline=2
 set tabpagemax=20
 " List and switch between buffers with ,l
 nnoremap <leader>l :ls <CR>:b<space>  
-" Toggle the NERDTree sidebar with <F2>
-map <F2> :NERDTreeTabsToggle<CR>
 " Open the CtrlP search pane with Control+X
 let g:ctrlp_map = '<C-X>'
 " Enable mouse support (heresy!)
@@ -169,8 +161,6 @@ if has("gui_running")
 " Use text dialogs instead of GUI popups
     set guioptions+=c
 endif
-" Don't open the NERDTree sidebar automatically in MacVim
-let g:nerdtree_tabs_open_on_gui_startup=0
 " =============================================================================
 " Text Editing, Formatting & Snippets
 " =============================================================================
