@@ -33,9 +33,6 @@ Plugin 'tpope/vim-repeat'
 " Pretty colours
 " https://github.com/altercation/vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
-" Text filtering and alignment
-" https://github.com/godlygeek/tabular
-Plugin 'godlygeek/tabular'
 " Outliner mode
 " https://github.com/vimoutliner/vimoutliner
 Plugin 'vimoutliner/vimoutliner'
@@ -66,10 +63,6 @@ Plugin 'airblade/vim-gitgutter'
 " Rename files
 " https://github.com/vim-scripts/renamer.vim
 Plugin 'vim-scripts/renamer.vim'
-" Snippets
-" https://github.com/SirVer/ultisnips
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 " Todo.txt
 " https://github.com/freitass/todo.txt-vim
 Plugin 'freitass/todo.txt-vim'
@@ -194,10 +187,6 @@ nmap <leader>fr :%! ~/bin/formd -r<CR>
 nmap <leader>fi :%! ~/bin/formd -i<CR>
 " Ask before closing unsaved files, &c.
 set confirm
-" Trigger UltiSnips with Tab
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " =============================================================================
 " Copy & Paste
 " =============================================================================

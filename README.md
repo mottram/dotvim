@@ -15,7 +15,6 @@
 * [Surround](https://github.com/tpope/vim-surround)
 * [Repeat](https://github.com/tpope/vim-repeat)
 * [Solarized Colorscheme for Vim](https://github.com/altercation/vim-colors-solarized)
-* [Tabular](https://github.com/godlygeek/tabular)
 * [Vimoutliner](https://github.com/vimoutliner/vimoutliner)
 * [Supertab](https://github.com/scrooloose/nerdtree)
 * [Taskpaper](https://github.com/davidoc/taskpaper.vim)
