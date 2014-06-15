@@ -21,49 +21,22 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Vundle must be managed by Vundle!
 Plugin 'gmarik/Vundle.vim'
+" See README.md for Plugin details
 Plugin 'justinmk/vim-sneak'
 Plugin 'nelstrom/vim-markdown-folding'
-" Git wrangling
-" https://github.com/tpope/vim-fugitive
 Plugin 'tpope/vim-fugitive'
-" Easy quoting/parenthesizing
-" https://github.com/tpope/vim-surround
 Plugin 'tpope/vim-surround'
-" Repeat vim-surround stuff with '.'
-" https://github.com/tpope/vim-repeat
 Plugin 'tpope/vim-repeat'
-" Pretty colours
-" https://github.com/altercation/vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
-" Use tab for completions
-" https://github.com/ervandew/supertab
 Plugin 'ervandew/supertab'
-" Taskpaper syntax highlighting
-" https://github.com/davidoc/taskpaper.vim
 Plugin 'davidoc/taskpaper.vim'
-" Preview Mardkown files in Marked
-" https://github.com/itspriddle/vim-marked
 Plugin 'itspriddle/vim-marked'
-" Toggle comments
-" https://github.com/tpope/vim-commentary
 Plugin 'tpope/vim-commentary'
-" Clipboard history
-" https://github.com/maxbrunsfeld/vim-yankstack
 Plugin 'maxbrunsfeld/vim-yankstack'
-" Improved matching with %
-" https://github.com/edsono/vim-matchit
 Plugin 'edsono/vim-matchit'
-" Shows a git diff in the gutter
-" https://github.com/airblade/vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
-" Rename files
-" https://github.com/vim-scripts/renamer.vim
 Plugin 'vim-scripts/renamer.vim'
-" Todo.txt
-" https://github.com/freitass/todo.txt-vim
 Plugin 'freitass/todo.txt-vim'
-" Most Recently Used files
-" https://github.com/yegappan/mru
 Plugin 'yegappan/mru'
 call vundle#end()
 " =============================================================================
