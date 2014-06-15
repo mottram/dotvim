@@ -50,6 +50,8 @@ set encoding=utf-8 nobomb
 filetype indent plugin on
 " If a file is changed externally, reload it
 set autoread
+" *.md files are Markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " All files in the Notes and Tumblr directories  are Markdown
 au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
 au BufRead,BufNewfile ~/.local/share/tumblr/* set filetype=markdown
@@ -111,8 +113,6 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 " Slim down the Vexplore window
 let g:netrw_winsize = 30
-" Ignore the same stuff in netrw as wildmenu
-let g:netrw_list_hide = &wildignore
 " Don't show the banner in netrw
 let g:netrw_banner=0
 " Find files in the current directory, current *working* directory and below
