@@ -1,13 +1,6 @@
 " Jack Mottram's ~/.vimrc 
 " For more details see:
 " https://github.com/mottram/dotvim
-" TODO {{{
-" TODO Use let: to define colours, use in ModeStatus function and StatusLine
-" TODO Single letter replace mode indicator (r) should match replace mode (R)
-" TODO I seem to be getting annoyed by relativenumber - toggle w/ keybinding?
-" TODO Check whether I need all those suffixesadd filetypes
-" TODO Check out https://gist.github.com/sjl/1038710 - Markdown folding
-" }}}
 " Setup {{{
 
 " Use Vim settings, not vi settings
@@ -329,4 +322,11 @@ nmap <S-F11> :!~/bin/otw-queue.sh %<CR><CR>
 " Change directory to the current buffer when opening files.
 " set autochdir
 
+" }}}
+" Todo {{{
+" TODO Use let: to define colours, use in ModeStatus function and StatusLine
+" TODO Single letter replace mode indicator (r) should match replace mode (R)
+" TODO I seem to be getting annoyed by relativenumber - toggle w/ keybinding?
+" TODO Check whether I need all those suffixesadd filetypes
+" TODO Check out https://gist.github.com/sjl/1038710 - Markdown folding
 " }}}
