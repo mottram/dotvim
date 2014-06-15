@@ -35,9 +35,6 @@ Plugin 'tpope/vim-repeat'
 " Pretty colours
 " https://github.com/altercation/vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
-" Outliner mode
-" https://github.com/vimoutliner/vimoutliner
-Plugin 'vimoutliner/vimoutliner'
 " Use tab for completions
 " https://github.com/ervandew/supertab
 Plugin 'ervandew/supertab'
