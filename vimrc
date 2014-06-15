@@ -1,20 +1,22 @@
-" Jack Mottram's ~/.vimrc
+" Jack Mottram's ~/.vimrc 
 " For more details see:
 " https://github.com/mottram/dotvim
+" TODO {{{
 " TODO Use let: to define colours, use in ModeStatus function and StatusLine
 " TODO Single letter replace mode indicator (r) should match replace mode (R)
 " TODO I seem to be getting annoyed by relativenumber - toggle w/ keybinding?
 " TODO Check whether I need all those suffixesadd filetypes
-" =============================================================================
-" Setup
-" =============================================================================
+" TODO Check out https://gist.github.com/sjl/1038710 - Markdown folding
+" }}}
+" Setup {{{
+
 " Use Vim settings, not vi settings
 set nocompatible
 " Turn off modelines
 set nomodeline
-" =============================================================================
-" Plugins 
-" =============================================================================
+" }}}
+" Plugins {{{
+
 " Load plugins with Vundle
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -38,9 +40,9 @@ Plugin 'vim-scripts/renamer.vim'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'yegappan/mru'
 call vundle#end()
-" =============================================================================
-" Filetypes
-" =============================================================================
+" }}}
+" Filetypes {{{
+
 " Unix & Mac Filetypes only
 set ffs=unix,mac
 " Use utf-8, no BOM
@@ -60,9 +62,9 @@ au BufRead,BufNewfile ~/Dropbox/todo/*.txt set filetype=todo
 au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
 " Set text width to 65 when writing mail in mutt
 au FileType mail set tw=65
-" =============================================================================
-" User Interface
-" =============================================================================
+" }}}
+" User Interface {{{
+
 " Use comma instead of backslash as leader
 let mapleader=","
 let gmapleader=","
@@ -144,112 +146,9 @@ if has("gui_running")
 " Use text dialogs instead of GUI popups
     set guioptions+=c
 endif
-" =============================================================================
-" Text Editing, Formatting & Snippets
-" =============================================================================
-" Indent automatically
-set autoindent
-set smartindent
-set shiftwidth=4
-" Tab settings
-set tabstop=4
-set softtabstop=4
-set smarttab
-set expandtab
-" Make folds persistent
-au BufWinLeave *.* mkview
-au BufWinEnter *.* silent loadview
-" Convert inline Markdown links to references with formd, and vice versa
-nmap <leader>fr :%! ~/bin/formd -r<CR>
-nmap <leader>fi :%! ~/bin/formd -i<CR>
-" Ask before closing unsaved files, &c.
-set confirm
-" =============================================================================
-" Copy & Paste
-" =============================================================================
-" Manage the clipboard with Yankstack
-" (Required or the remapping of 'Y' below won't work)
-call yankstack#setup()
-" Cycle through Yankstack's clipboard history
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-" Show yanks
-nmap <leader>y :Yanks<CR>
-" Yank to the end of the line with Y
-map Y y$
-" Integrate with the system clipboard
-set clipboard=unnamed
-" Toggle paste mode with F6
-set pastetoggle=<F6>
-" Always exit paste mode when leaving insert mode
-au InsertLeave * set nopaste
-" =============================================================================
-" Search & Highlighting
-" =============================================================================
-" Use matchit
-runtime macros/matchit.vim
-" Highlight search terms
-set hlsearch
-" Search incrementally
-set incsearch
-" Make search case insensitive...
-set ignorecase
-" ...unless there's an upper case character
-set smartcase
-" Clear last search highlighting with Return
-function! MapCR()
-    nnoremap <cr> :nohlsearch<cr>:<backspace>
-endfunction
-call MapCR()
-" Highlight last search term with ,hl
-nnoremap <leader>hl :set hlsearch<cr>
-" Search and move with Sneak
-nmap s <Plug>(SneakStreak)
-nmap S <Plug>(SneakStreakBackward)
-xmap s <Plug>Sneak_s
-xmap S <Plug>Sneak_S
-" Enable syntax highlighting
-syntax on
-" Highlight matching brackets
-set showmatch
-" GitGutter colour settings
-highlight clear SignColumn
-highlight GitGutterAddLine ctermbg=LightGray
-highlight GitGutterChangeLine ctermbg=LightGray
-highlight GitGutterDeleteLine ctermbg=LightGray
-highlight GitGutterChangeDeleteLine ctermbg=LightGray
-" =============================================================================
-" Spelling & Dictionary
-" =============================================================================
-" Set dictionary
-set dictionary=/usr/share/dict/words
-" Turn on spellcheck with F4
-map <F4> :setlocal spell spelllang=en_gb<CR>
-" Turn off spellcheck with F5
-map <F5> :set nospell<CR>
-" Turn dictionary autocomplete on...
-map <F7> :set complete+=k<CR>
-" ... and off
-map <S-F7> :set complete-=k<CR>
-" =============================================================================
-" Backups & Undo
-" =============================================================================
-" No ~backup files
-set nobackup
-" Make temporary backups
-set writebackup
-set backupdir=~/.vim/backup
-set directory=~/.vim/temp
-" Keep undo history
-set undofile
-set undodir=~/.vim/undo
-" =============================================================================
-" Testing & Temporary
-" =============================================================================
-" Weblog posting
-nmap <F11> :!~/bin/otw-draft.sh %<CR><CR>
-nmap <S-F11> :!~/bin/otw-queue.sh %<CR><CR>
-" New statusline, no plugins required.
+" }}}
+" Statusline {{{
+
 " Define default mode status/StatusLine colours
 highlight User1 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900
 highlight User2 ctermbg=Black ctermfg=DarkGray guibg=#002b36 guifg=#657b83
@@ -319,3 +218,115 @@ function! PasteStatus()
     en
         return ''
 endfunction
+" }}}
+" Text Editing, Formatting & Snippets {{{
+
+" Indent automatically
+set autoindent
+set smartindent
+set shiftwidth=4
+" Tab settings
+set tabstop=4
+set softtabstop=4
+set smarttab
+set expandtab
+" Make folds persistent
+au BufWinLeave *.* mkview
+au BufWinEnter *.* silent loadview
+" Convert inline Markdown links to references with formd, and vice versa
+nmap <leader>fr :%! ~/bin/formd -r<CR>
+nmap <leader>fi :%! ~/bin/formd -i<CR>
+" Ask before closing unsaved files, &c.
+set confirm
+" }}}
+" Copy & Paste {{{
+
+" Manage the clipboard with Yankstack
+" (Required or the remapping of 'Y' below won't work)
+call yankstack#setup()
+" Cycle through Yankstack's clipboard history
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" Show yanks
+nmap <leader>y :Yanks<CR>
+" Yank to the end of the line with Y
+map Y y$
+" Integrate with the system clipboard
+set clipboard=unnamed
+" Toggle paste mode with F6
+set pastetoggle=<F6>
+" Always exit paste mode when leaving insert mode
+au InsertLeave * set nopaste
+" }}}
+" Search & Highlighting {{{
+
+" Use matchit
+runtime macros/matchit.vim
+" Highlight search terms
+set hlsearch
+" Search incrementally
+set incsearch
+" Make search case insensitive...
+set ignorecase
+" ...unless there's an upper case character
+set smartcase
+" Clear last search highlighting with Return
+function! MapCR()
+    nnoremap <cr> :nohlsearch<cr>:<backspace>
+endfunction
+call MapCR()
+" Highlight last search term with ,hl
+nnoremap <leader>hl :set hlsearch<cr>
+" Search and move with Sneak
+nmap s <Plug>(SneakStreak)
+nmap S <Plug>(SneakStreakBackward)
+xmap s <Plug>Sneak_s
+xmap S <Plug>Sneak_S
+" Enable syntax highlighting
+syntax on
+" Highlight matching brackets
+set showmatch
+" GitGutter colour settings
+highlight clear SignColumn
+highlight GitGutterAddLine ctermbg=LightGray
+highlight GitGutterChangeLine ctermbg=LightGray
+highlight GitGutterDeleteLine ctermbg=LightGray
+highlight GitGutterChangeDeleteLine ctermbg=LightGray
+" }}}
+" Spelling & Dictionary {{{
+
+" Set dictionary
+set dictionary=/usr/share/dict/words
+" Turn on spellcheck with F4
+map <F4> :setlocal spell spelllang=en_gb<CR>
+" Turn off spellcheck with F5
+map <F5> :set nospell<CR>
+" Turn dictionary autocomplete on...
+map <F7> :set complete+=k<CR>
+" ... and off
+map <S-F7> :set complete-=k<CR>
+" }}}
+" Backups & Undo {{{
+
+" No ~backup files
+set nobackup
+" Make temporary backups
+set writebackup
+set backupdir=~/.vim/backup
+set directory=~/.vim/temp
+" Keep undo history
+set undofile
+set undodir=~/.vim/undo
+" }}}
+" Testing & Temporary {{{
+
+" Weblog posting
+nmap <F11> :!~/bin/otw-draft.sh %<CR><CR>
+nmap <S-F11> :!~/bin/otw-queue.sh %<CR><CR>
+
+" Abbreviations
+"   Replacing snippet plugin...
+" Change directory to the current buffer when opening files.
+" set autochdir
+
+" }}}
