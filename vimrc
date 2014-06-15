@@ -33,7 +33,6 @@ Plugin 'davidoc/taskpaper.vim'
 Plugin 'itspriddle/vim-marked'
 Plugin 'tpope/vim-commentary'
 Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'edsono/vim-matchit'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/renamer.vim'
 Plugin 'freitass/todo.txt-vim'
@@ -187,6 +186,8 @@ au InsertLeave * set nopaste
 " =============================================================================
 " Search & Highlighting
 " =============================================================================
+" Use matchit
+runtime macros/matchit.vim
 " Highlight search terms
 set hlsearch
 " Search incrementally
