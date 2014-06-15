@@ -103,7 +103,16 @@ set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 " Ignore temp and backup files
 set wildignore+=*.swp,*~,._*
 " Use tree view in netrw
-let g:netrw_liststyle=3
+let g:netrw_liststyle = 3
+" Open netrw in a vertical split
+let g:netrw_preview = 1
+" Open files from netrw in the previously used window to the right
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+" Slim down the Vexplore window
+let g:netrw_winsize = 30
+" Ignore the same stuff in netrw as wildmenu
+let g:netrw_list_hide = &wildignore
 " Don't show the banner in netrw
 let g:netrw_banner=0
 " Find files in the current directory, current *working* directory and below
