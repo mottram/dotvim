@@ -149,8 +149,6 @@ set expandtab
 " Make folds persistent
 au BufWinLeave *.* mkview
 au BufWinEnter *.* silent loadview
-" Make Markdown folds nested
-let g:markdown_fold_style = 'nested'
 " Convert inline Markdown links to references with formd, and vice versa
 nmap <leader>fr :%! ~/bin/formd -r<CR>
 nmap <leader>fi :%! ~/bin/formd -i<CR>
@@ -315,7 +313,6 @@ nmap <S-F11> :!~/bin/otw-queue.sh %<CR><CR>
 " TODO Single letter replace mode indicator (r) should match replace mode (R)
 " TODO I seem to be getting annoyed by relativenumber - toggle w/ keybinding?
 " TODO Check whether I need all those suffixesadd filetypes
-" TODO Check out https://gist.github.com/sjl/1038710 - Markdown folding
 " TODO set autochdir ?
 " TODO set scrolloff = 999 to keep cursor line centred?
 " TODO iabbrev
