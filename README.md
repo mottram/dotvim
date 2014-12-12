@@ -24,7 +24,7 @@
 * [Matchit](https://github.com/edsono/vim-matchit)
 * [GitGutter](https://github.com/airblade/vim-gitgutter)
 * [Renamer](https://github.com/vim-scripts/renamer.vim)
-* [UltiSnips](https://github.com/SirVer/ultisnips) (with [vim-snippets](https://github.com/honza/vim-snippets))
 * [Todo.txt](https://github.com/freitass/todo.txt-vim)
 * [MRU](https://github.com/vim-scripts/mru.vim)
 * [Commentary](https://github.com/tpope/vim-commentary)
+* [Bufferline](https://github.com/bling/vim-bufferline)
