@@ -30,6 +30,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-scripts/renamer.vim'
 Plugin 'yegappan/mru'
+Plugin 'bling/vim-bufferline'
+"Plugin 'jpalardy/vim-slime'
+"Plugin 'munshkr/vim-tidal'
 call vundle#end()
 " }}}
 " Filetypes {{{
@@ -59,6 +62,7 @@ au FileType mail set tw=65
 " Use comma instead of backslash as leader
 let mapleader=","
 let gmapleader=","
+let maplocalleader=","
 " Hide buffers
 set hidden
 " Show line numbers
@@ -96,15 +100,6 @@ set wildignore+=.DS_Store
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 " Ignore temp and backup files
 set wildignore+=*.swp,*~,._*
-" Open files from netrw in a vertical split
-" let g:netrw_preview = 1
-" Open files from netrw in the previously used window to its right
-" let g:netrw_browse_split = 4
-" let g:netrw_altv = 1
-" Slim down the Vexplore window
-" let g:netrw_winsize = 30
-" Don't show the banner in netrw
-" let g:netrw_banner=0
 " Find files in the current directory, current *working* directory and below
 set path=**
 " Tell find, gf which filetypes to look for
@@ -135,6 +130,8 @@ if has("gui_running")
 " Use text dialogs instead of GUI popups
     set guioptions+=c
 endif
+" MRU settings
+let MRU_Max_Entries = 30
 " }}}
 " Text Editing, Formatting & Snippets {{{
 " Indent automatically
@@ -258,7 +255,7 @@ set statusline+=%{&fileencoding}
 set statusline+=%=\  
 set statusline+=%{GitBranchStatus()}
 set statusline+=%3*
-set statusline+=\ %l/%L\ 
+set statusline+=\ %l/%L
 " Git branch indicator
 function! GitBranchStatus()
   if exists("*fugitive#head")
@@ -303,8 +300,22 @@ endfunction
 " }}}
 " Testing & Temporary {{{
 " Weblog posting
-nmap <F11> :!~/bin/otw-draft.sh %<CR><CR>
-nmap <S-F11> :!~/bin/otw-queue.sh %<CR><CR>
+"nmap <F11> :!~/bin/otw-draft.sh %<CR><CR>
+"nmap <S-F11> :!~/bin/otw-queue.sh %<CR><CR>
+" Open files from netrw in a vertical split
+" let g:netrw_preview = 1
+" Open files from netrw in the previously used window to its right
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" Slim down the Vexplore window
+" let g:netrw_winsize = 30
+" Don't show the banner in netrw
+" let g:netrw_banner=0
+" Slime for Tidal
+"let g:slime_target = "tmux"
+"let g:slime_paste_file = tempname()
+"let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+"au BufRead,BufNewFile,BufNew *.tidal setl ft=haskell.script
 " Abbreviations
 " au FileType markdown :iabbrev nnn [](<esc>pA)<esc>?\[<C-R>a
 " }}}
