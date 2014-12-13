@@ -30,7 +30,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-scripts/renamer.vim'
 Plugin 'yegappan/mru'
-Plugin 'bling/vim-bufferline'
+Plugin 'ap/vim-buftabline'
 "Plugin 'jpalardy/vim-slime'
 "Plugin 'munshkr/vim-tidal'
 call vundle#end()
