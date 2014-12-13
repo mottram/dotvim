@@ -28,13 +28,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/renamer.vim'
 Plugin 'yegappan/mru'
 Plugin 'ap/vim-buftabline'
 Plugin 'jeetsukumaran/vim-buffergator'
-"Plugin 'jpalardy/vim-slime'
-"Plugin 'munshkr/vim-tidal'
 call vundle#end()
 " }}}
 " Filetypes {{{
@@ -135,7 +132,7 @@ endif
 " MRU settings
 let MRU_Max_Entries = 30
 " }}}
-" Text Editing, Formatting & Snippets {{{
+" Text Editing & Formatting {{{
 " Indent automatically
 set autoindent
 set smartindent
@@ -299,34 +296,4 @@ function! PasteStatus()
     en
         return ''
 endfunction
-" }}}
-" Testing & Temporary {{{
-" Weblog posting
-"nmap <F11> :!~/bin/otw-draft.sh %<CR><CR>
-"nmap <S-F11> :!~/bin/otw-queue.sh %<CR><CR>
-" Open files from netrw in a vertical split
-" let g:netrw_preview = 1
-" Open files from netrw in the previously used window to its right
-" let g:netrw_browse_split = 4
-" let g:netrw_altv = 1
-" Slim down the Vexplore window
-" let g:netrw_winsize = 30
-" Don't show the banner in netrw
-" let g:netrw_banner=0
-" Slime for Tidal
-"let g:slime_target = "tmux"
-"let g:slime_paste_file = tempname()
-"let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
-"au BufRead,BufNewFile,BufNew *.tidal setl ft=haskell.script
-" Abbreviations
-" au FileType markdown :iabbrev nnn [](<esc>pA)<esc>?\[<C-R>a
-" }}}
-" Todo {{{
-" TODO Use let: to define colours, use in ModeStatus function and StatusLine
-" TODO Single letter replace mode indicator (r) should match replace mode (R)
-" TODO I seem to be getting annoyed by relativenumber - toggle w/ keybinding?
-" TODO Check whether I need all those suffixesadd filetypes
-" TODO set autochdir ?
-" TODO set scrolloff = 999 to keep cursor line centred?
-" TODO iabbrev
 " }}}
