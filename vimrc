@@ -15,6 +15,7 @@ call vundle#begin()
 " Vundle must be managed by Vundle!
 Plugin 'gmarik/Vundle.vim'
 " See README.md for Plugin details
+Plugin 'roman/golden-ratio'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'davidoc/taskpaper.vim'
