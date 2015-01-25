@@ -33,6 +33,7 @@ Plugin 'vim-scripts/renamer.vim'
 Plugin 'yegappan/mru'
 Plugin 'ap/vim-buftabline'
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'godlygeek/tabular'
 call vundle#end()
 " }}}
 " Filetypes {{{

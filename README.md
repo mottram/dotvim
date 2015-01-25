@@ -28,3 +28,4 @@
 * [Commentary](https://github.com/tpope/vim-commentary)
 * [Buftabline](https://github.com/ap/vim-buftabline)
 * [Buffergator](https://github.com/jeetsukumaran/vim-buffergator)
+* [Tabular](https://github.com/godlygeek/tabular)
