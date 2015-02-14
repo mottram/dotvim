@@ -8,42 +8,27 @@ set nocompatible
 set nomodeline
 " }}}
 " Plugins {{{
-" Automatically install Vundle
-let has_vundle=1
-if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
-    let has_vundle=0
-endif
-" Load plugins with Vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Vundle must be managed by Vundle!
-Plugin 'gmarik/Vundle.vim'
-" See README.md for Plugin details
-Plugin 'roman/golden-ratio'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'davidoc/taskpaper.vim'
-Plugin 'ervandew/supertab'
-Plugin 'freitass/todo.txt-vim'
-Plugin 'itspriddle/vim-marked'
-Plugin 'justinmk/vim-sneak'
-Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vinegar'
-Plugin 'vim-scripts/renamer.vim'
-Plugin 'yegappan/mru'
-Plugin 'ap/vim-buftabline'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'godlygeek/tabular'
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'roman/golden-ratio'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'davidoc/taskpaper.vim', { 'for': 'taskpaper' }
+Plug 'ervandew/supertab'
+Plug 'freitass/todo.txt-vim'
+Plug 'itspriddle/vim-marked', { 'for': 'markdown' }
+Plug 'justinmk/vim-sneak'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-scripts/renamer.vim'
+Plug 'yegappan/mru'
+Plug 'ap/vim-buftabline'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'godlygeek/tabular'
+call plug#end()
 " }}}
 " Filetypes {{{
 " Unix & Mac Filetypes only
