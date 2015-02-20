@@ -3,13 +3,15 @@
 ### Setup
 
 1. `git clone https://github.com/mottram/dotvim.git ~/.vim`
-2. `mkdir -p ~/.vim/{backup,temp,undo,view}`
-3. `ln -s ~/.vim/vimrc ~/.vimrc`
-5. `vim +PluginInstall +qall`
+2. `mkdir -p ~/.vim/{backup,temp,undo,view,autoload}`
+3. `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+4. `ln -s ~/.vim/vimrc ~/.vimrc`
+5. `vim +PlugInstall +qall`
 
 ### Plugins
 
-* [Vundle](https://github.com/gmarik/vundle)
+* [Vim-Plug](https://github.com/junegunn/vim-plug)
 * [Fugitive](https://github.com/tpope/vim-fugitive)
 * [Surround](https://github.com/tpope/vim-surround)
 * [Repeat](https://github.com/tpope/vim-repeat)
