@@ -3,5 +3,6 @@ backup
 temp
 view
 undo
-bundle
+plugged
+autoload
 .netrwhist

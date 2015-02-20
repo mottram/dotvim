@@ -127,6 +127,7 @@ if has("gui_running")
 endif
 " MRU settings
 let MRU_Max_Entries = 30
+nmap <leader>m :Mru<CR>
 " }}}
 " Text Editing & Formatting {{{
 " Indent automatically
