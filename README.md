@@ -1,21 +1,19 @@
-## Notes to self
+# Notes to self
 
-### Setup
+## Setup
 
 1. `git clone https://github.com/mottram/dotvim.git ~/.vim`
 2. `mkdir -p ~/.vim/{backup,temp,undo,view,autoload}`
-3. `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+3. `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 4. `ln -s ~/.vim/vimrc ~/.vimrc`
 5. `vim +PlugInstall +qall`
 
-### Plugins
+## Plugins
 
 * [Vim-Plug](https://github.com/junegunn/vim-plug)
 * [Fugitive](https://github.com/tpope/vim-fugitive)
 * [Surround](https://github.com/tpope/vim-surround)
 * [Repeat](https://github.com/tpope/vim-repeat)
-* [Solarized Colorscheme for Vim](https://github.com/altercation/vim-colors-solarized)
 * [Vimoutliner](https://github.com/vimoutliner/vimoutliner)
 * [Supertab](https://github.com/scrooloose/nerdtree)
 * [Taskpaper](https://github.com/davidoc/taskpaper.vim)
@@ -30,3 +28,4 @@
 * [Buftabline](https://github.com/ap/vim-buftabline)
 * [Buffergator](https://github.com/jeetsukumaran/vim-buffergator)
 * [Tabular](https://github.com/godlygeek/tabular)
+* [Gruvbox](https://github.com/morhetz/gruvbox)

@@ -11,7 +11,6 @@ set nomodeline
 call plug#begin('~/.vim/plugged')
 Plug 'roman/golden-ratio'
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'davidoc/taskpaper.vim', { 'for': 'taskpaper' }
 Plug 'ervandew/supertab'
 Plug 'freitass/todo.txt-vim'
@@ -28,6 +27,7 @@ Plug 'yegappan/mru'
 Plug 'ap/vim-buftabline'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'godlygeek/tabular'
+Plug 'morhetz/gruvbox'
 call plug#end()
 " }}}
 " Filetypes {{{
@@ -114,7 +114,7 @@ if &term == "linux"
 else
     set t_Co=256
     set background=dark
-    colorscheme solarized
+    colorscheme gruvbox
 endif
 " Macvim settings
 if has("gui_running")
@@ -195,7 +195,7 @@ syntax on
 set showmatch
 " GitGutter colour settings
 highlight clear SignColumn
-highlight GitGutterAddLine ctermbg=LightGray
+highlight GitGutterAddLine ctermbg=DarkGray
 highlight GitGutterChangeLine ctermbg=LightGray
 highlight GitGutterDeleteLine ctermbg=LightGray
 highlight GitGutterChangeDeleteLine ctermbg=LightGray
@@ -225,15 +225,15 @@ set undodir=~/.vim/undo
 " }}}
 " Statusline {{{
 " Define default mode status/StatusLine colours
-highlight User1 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900
-highlight User2 ctermbg=Black ctermfg=DarkGray guibg=#002b36 guifg=#657b83
-highlight User3 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900
-highlight User4 ctermbg=Black ctermfg=Red guibg=#073642 guifg=#dc322f
+" highlight User1 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900
+" highlight User2 ctermbg=Black ctermfg=DarkGray guibg=#002b36 guifg=#657b83
+" highlight User3 ctermbg=Black ctermfg=DarkGreen guibg=#073642 guifg=#859900
+" highlight User4 ctermbg=Black ctermfg=Red guibg=#073642 guifg=#dc322f
 " Override Solarized colours to make the StatusLine and WildMenu prettier
-highlight! StatusLine ctermbg=DarkGreen ctermfg=Black guibg=#859900 guifg=#002b36
-highlight! WildMenu ctermbg=Black ctermfg=DarkGreen guibg=#002b36 guifg=#859900
-highlight! Search ctermfg=DarkGray guifg=#93a1a1
-highlight! IncSearch ctermfg=DarkGray guifg=#93a1a1
+" highlight! StatusLine ctermbg=DarkGreen ctermfg=Black guibg=#859900 guifg=#002b36
+" highlight! WildMenu ctermbg=Black ctermfg=DarkGreen guibg=#002b36 guifg=#859900
+" highlight! Search ctermfg=DarkGray guifg=#93a1a1
+" highlight! IncSearch ctermfg=DarkGray guifg=#93a1a1
 set statusline=
 set statusline+=%3*
 set statusline+=%<
@@ -251,7 +251,7 @@ set statusline+=%{&fileencoding}
 set statusline+=%=\  
 set statusline+=%{GitBranchStatus()}
 set statusline+=%3*
-set statusline+=\ %l/%L
+set statusline+=\ %c\ %l/%L
 " Git branch indicator
 function! GitBranchStatus()
   if exists("*fugitive#head")
@@ -278,11 +278,11 @@ function! ModeStatus()
     redraw
     let l:mode = mode()
     if     mode ==# "n"  | exec 'hi User1 ctermbg=Black ctermfg=DarkGreen guibg=#002b36 guifg=#859900' | return " "
-    elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkGreen ctermfg=LightGray guibg=#859900 guifg=#eee8d5' | return "INSERT "
-    elseif mode ==# "v"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=LightGray guibg=#d33682 guifg=#eee8d5' | return "VISUAL "
-    elseif mode ==# "V"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=LightGray guibg=#d33682 guifg=#eee8d5' | return "V-LINE "
-    elseif mode ==# "" | exec 'hi User1 ctermbg=DarkMagenta ctermfg=LightGray guibg=#d33682 guifg=#eee8d5' | return "V-BLOCK "
-    elseif mode ==# "R"  | exec 'hi User1 ctermbg=DarkCyan ctermfg=LightGray guibg=#2aa198 guifg=#eee8d5' | return "REPLACE "
+    elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkGreen ctermfg=White guibg=#859900 guifg=#eee8d5' | return "INSERT "
+    elseif mode ==# "v"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return "VISUAL "
+    elseif mode ==# "V"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return "V-LINE "
+    elseif mode ==# "" | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return "V-BLOCK "
+    elseif mode ==# "R"  | exec 'hi User1 ctermbg=DarkCyan ctermfg=White guibg=#2aa198 guifg=#eee8d5' | return "REPLACE "
     else                 | return l:mode
     endif
 endfunction
