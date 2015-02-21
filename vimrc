@@ -26,7 +26,7 @@ Plug 'vim-scripts/renamer.vim'
 Plug 'yegappan/mru'
 Plug 'ap/vim-buftabline'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'morhetz/gruvbox'
 call plug#end()
 " }}}
@@ -107,7 +107,7 @@ set ttimeoutlen=10
 set completeopt+=menuone
 " Colourscheme settings
 " On a TTY, use the miro8 colourscheme (see http://1tw.org/1deUzmR). If 256
-" colours are available, use Solarized dark
+" colours are available, use Gruvbox dark
 set term=$TERM
 if &term == "linux"
     colorscheme miro8
@@ -193,12 +193,6 @@ xmap S <Plug>Sneak_S
 syntax on
 " Highlight matching brackets
 set showmatch
-" GitGutter colour settings
-highlight clear SignColumn
-highlight GitGutterAddLine ctermbg=DarkGray
-highlight GitGutterChangeLine ctermbg=LightGray
-highlight GitGutterDeleteLine ctermbg=LightGray
-highlight GitGutterChangeDeleteLine ctermbg=LightGray
 " }}}
 " Spelling & Dictionary {{{
 " Set dictionary
