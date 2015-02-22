@@ -28,6 +28,7 @@ Plug 'ap/vim-buftabline'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'morhetz/gruvbox'
+Plug 'nelstrom/vim-markdown-folding', { 'for': 'markdown' }
 call plug#end()
 " }}}
 " Filetypes {{{
