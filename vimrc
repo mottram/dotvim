@@ -107,7 +107,7 @@ set ttimeoutlen=10
 set completeopt+=menuone
 " Colourscheme settings
 " On a TTY, use the miro8 colourscheme (see http://1tw.org/1deUzmR). If 256
-" colours are available, use Gruvbox dark
+" colours are available, use Gruvbox.
 set term=$TERM
 if &term == "linux"
     colorscheme miro8
@@ -115,6 +115,9 @@ else
     set t_Co=256
     set background=dark
     colorscheme gruvbox
+    let g:gruvbox_sign_column='dark0'
+    let g:gruvbox_contrast_dark='soft'
+    let g:gruvbox_invert_selection='0'
 endif
 " Macvim settings
 if has("gui_running")
@@ -271,7 +274,7 @@ endfunction
 function! ModeStatus()
     redraw
     let l:mode = mode()
-    if     mode ==# "n"  | exec 'hi User1 ctermbg=Black ctermfg=DarkGreen guibg=#002b36 guifg=#859900' | return " "
+    if     mode ==# "n"  | exec 'hi User1 ctermbg=Black ctermfg=DarkGreen guibg=#32302f guifg=#eee8d5' | return " "
     elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkGreen ctermfg=White guibg=#859900 guifg=#eee8d5' | return "INSERT "
     elseif mode ==# "v"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return "VISUAL "
     elseif mode ==# "V"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return "V-LINE "
