@@ -115,8 +115,11 @@ else
     set t_Co=256
     set background=dark
     colorscheme gruvbox
+    " Make the sign column match the background
     let g:gruvbox_sign_column='dark0'
+    " Reduce contrast
     let g:gruvbox_contrast_dark='soft'
+    " Don't invert colours when selecting text
     let g:gruvbox_invert_selection='0'
 endif
 " Macvim settings
