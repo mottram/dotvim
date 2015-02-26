@@ -29,7 +29,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'morhetz/gruvbox'
 Plug 'nelstrom/vim-markdown-folding', { 'for': 'markdown' }
-Plug 'scrooloose/syntastic', { 'for': ['markdown', 'python', 'zsh'] }
+Plug 'scrooloose/syntastic', { 'for': [ 'markdown', 'python', 'vim' ] }
 call plug#end()
 " }}}
 " Filetypes {{{
@@ -54,6 +54,8 @@ au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
 au BufRead,BufNewfile ~/.vim/vimrc set foldmethod=marker
 " Set text width to 65 when writing mail in mutt
 au FileType mail set tw=65
+" Apply Syntastic settings to relevant filetypes
+au FileType markdown,python,vim set statusline+=%#warningmsg# |set statusline+=\ %{SyntasticStatuslineFlag()} |set statusline+=%* |let g:syntastic_always_populate_loc_list = 1 |let g:syntastic_auto_loc_list = 1| let g:syntastic_check_on_open = 1| let g:syntastic_check_on_wq = 0
 " }}}
 " User Interface {{{
 " Use comma instead of backslash as leader
@@ -136,6 +138,8 @@ endif
 " MRU settings
 let MRU_Max_Entries = 30
 nmap <leader>m :Mru<CR>
+" Markdown folding
+let g:markdown_fold_style = 'nested'
 " }}}
 " Text Editing & Formatting {{{
 " Indent automatically
