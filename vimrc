@@ -41,27 +41,29 @@ set encoding=utf-8 nobomb
 filetype indent plugin on
 " If a file is changed externally, reload it
 set autoread
-" *.md files are Markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" All files in the Notes and Tumblr directories  are Markdown
-au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
-au BufRead,BufNewfile ~/.local/share/tumblr/* set filetype=markdown
-" All txt files in the Todo.txt directory are Todo.txt format
-au BufRead,BufNewfile ~/Dropbox/todo/*.txt set filetype=todo
-" All files in the Taskpaper directory are Taskpaper
-au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
-" Fold ~/.vim/vimrc
-au BufRead,BufNewfile ~/.vim/vimrc set foldmethod=marker
-" Set text width to 65 when writing mail in mutt
-au FileType mail set tw=65
-" Apply Syntastic settings to relevant filetypes
-au FileType markdown,python,vim set statusline+=%#warningmsg# |set statusline+=\ %{SyntasticStatuslineFlag()} |set statusline+=%* |let g:syntastic_always_populate_loc_list = 1 |let g:syntastic_auto_loc_list = 1| let g:syntastic_check_on_open = 1| let g:syntastic_check_on_wq = 0
+augroup myFiletypes
+    " *.md files are Markdown
+    au BufNewFile,BufReadPost *.md set filetype=markdown
+    " All files in the Notes and Tumblr directories  are Markdown
+    au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
+    au BufRead,BufNewfile ~/.local/share/tumblr/* set filetype=markdown
+    " All txt files in the Todo.txt directory are Todo.txt format
+    au BufRead,BufNewfile ~/Dropbox/todo/*.txt set filetype=todo
+    " All files in the Taskpaper directory are Taskpaper
+    au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
+    " Fold ~/.vim/vimrc
+    au BufRead,BufNewfile ~/.vim/vimrc set foldmethod=marker
+    " Set text width to 65 when writing mail in mutt
+    au FileType mail set tw=65
+    " Apply Syntastic settings to relevant filetypes
+    au FileType markdown,python,vim set statusline+=%#warningmsg# |set statusline+=\ %{SyntasticStatuslineFlag()} |set statusline+=%* |let g:syntastic_always_populate_loc_list = 1 |let g:syntastic_auto_loc_list = 1| let g:syntastic_check_on_open = 1| let g:syntastic_check_on_wq = 0
+augroup END
 " }}}
 " User Interface {{{
 " Use comma instead of backslash as leader
-let mapleader=","
-let gmapleader=","
-let maplocalleader=","
+let mapleader=','
+let gmapleader=','
+let maplocalleader=','
 " Hide buffers
 set hidden
 " Show line numbers
@@ -113,7 +115,7 @@ set completeopt+=menuone
 " On a TTY, use the miro8 colourscheme (see http://1tw.org/1deUzmR). If 256
 " colours are available, use Gruvbox.
 set term=$TERM
-if &term == "linux"
+if &term ==? 'linux'
     colorscheme miro8
 else
     set t_Co=256
@@ -127,7 +129,7 @@ else
     let g:gruvbox_invert_selection='0'
 endif
 " Macvim settings
-if has("gui_running")
+if has('gui_running')
 " Use 10pt Monaco in MacVim
     set guifont=Monaco:h12
 " Remove the hideous toolbar in MacVim
@@ -152,8 +154,10 @@ set softtabstop=4
 set smarttab
 set expandtab
 " Make folds persistent
-au BufWinLeave *.* mkview
-au BufWinEnter *.* silent loadview
+augroup myFolding
+    au BufWinLeave *.* mkview
+    au BufWinEnter *.* silent loadview
+augroup END
 " Convert inline Markdown links to references with formd, and vice versa
 nmap <leader>fr :%! ~/bin/formd -r<CR>
 nmap <leader>fi :%! ~/bin/formd -i<CR>
@@ -260,7 +264,7 @@ set statusline+=%3*
 set statusline+=\ %c\ %l/%L
 " Git branch indicator
 function! GitBranchStatus()
-  if exists("*fugitive#head")
+  if exists('*fugitive#head')
     let _ = fugitive#head()
     return strlen(_) ? ''._ : ''
   endif
@@ -268,7 +272,7 @@ function! GitBranchStatus()
 endfunction
 " File status indicator
 function! FileStatus()
-  if &filetype == "help"
+  if &filetype ==# 'help'
     return ''
   elseif &readonly
     return ' ro'
@@ -283,19 +287,19 @@ endfunction
 function! ModeStatus()
     redraw
     let l:mode = mode()
-    if     mode ==# "n"  | exec 'hi User1 ctermbg=Black ctermfg=DarkGreen guibg=#32302f guifg=#eee8d5' | return " "
-    elseif mode ==# "i"  | exec 'hi User1 ctermbg=DarkGreen ctermfg=White guibg=#859900 guifg=#eee8d5' | return "INSERT "
-    elseif mode ==# "v"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return "VISUAL "
-    elseif mode ==# "V"  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return "V-LINE "
-    elseif mode ==# "" | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return "V-BLOCK "
-    elseif mode ==# "R"  | exec 'hi User1 ctermbg=DarkCyan ctermfg=White guibg=#2aa198 guifg=#eee8d5' | return "REPLACE "
+    if     mode ==# 'n'  | exec 'hi User1 ctermbg=Black ctermfg=DarkGreen guibg=#32302f guifg=#eee8d5' | return ' '
+    elseif mode ==# 'i'  | exec 'hi User1 ctermbg=DarkGreen ctermfg=White guibg=#859900 guifg=#eee8d5' | return 'INSERT '
+    elseif mode ==# 'v'  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return 'VISUAL '
+    elseif mode ==# 'V'  | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return 'V-LINE '
+    elseif mode ==# '' | exec 'hi User1 ctermbg=DarkMagenta ctermfg=White guibg=#d33682 guifg=#eee8d5' | return 'V-BLOCK '
+    elseif mode ==# 'R'  | exec 'hi User1 ctermbg=DarkCyan ctermfg=White guibg=#2aa198 guifg=#eee8d5' | return 'REPLACE '
     else                 | return l:mode
     endif
 endfunction
 " Paste mode indicator
 function! PasteStatus()
     if &paste
-        return "[PASTE] "
+        return '[PASTE] '
     en
         return ''
 endfunction
