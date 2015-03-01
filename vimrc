@@ -6,6 +6,10 @@
 set nocompatible
 " Turn off modelines
 set nomodeline
+" Use a group for autocommands
+augroup vimrc
+    autocmd!
+augroup END
 " }}}
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
@@ -29,7 +33,8 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'morhetz/gruvbox'
 Plug 'nelstrom/vim-markdown-folding', { 'for': 'markdown' }
-Plug 'scrooloose/syntastic', { 'for': [ 'markdown', 'python', 'vim' ] }
+Plug 'mattly/vim-markdown-enhancements', { 'for': 'markdown' }
+Plug 'scrooloose/syntastic', { 'for': [ 'markdown', 'python', 'vim', 'yaml' ] }
 call plug#end()
 " }}}
 " Filetypes {{{
@@ -37,32 +42,31 @@ call plug#end()
 set ffs=unix,mac
 " Use utf-8, no BOM
 set encoding=utf-8 nobomb
+scriptencoding utf-8
 " Detect filetypes
 filetype indent plugin on
 " If a file is changed externally, reload it
 set autoread
-augroup myFiletypes
-    " *.md files are Markdown
-    au BufNewFile,BufReadPost *.md set filetype=markdown
-    " All files in the Notes and Tumblr directories  are Markdown
-    au BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
-    au BufRead,BufNewfile ~/.local/share/tumblr/* set filetype=markdown
-    " All txt files in the Todo.txt directory are Todo.txt format
-    au BufRead,BufNewfile ~/Dropbox/todo/*.txt set filetype=todo
-    " All files in the Taskpaper directory are Taskpaper
-    au BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
-    " Fold ~/.vim/vimrc
-    au BufRead,BufNewfile ~/.vim/vimrc set foldmethod=marker
-    " Set text width to 65 when writing mail in mutt
-    au FileType mail set tw=65
-    " Apply Syntastic settings to relevant filetypes
-    au FileType markdown,python,vim set statusline+=%#warningmsg# |set statusline+=\ %{SyntasticStatuslineFlag()} |set statusline+=%* |let g:syntastic_always_populate_loc_list = 1 |let g:syntastic_auto_loc_list = 1| let g:syntastic_check_on_open = 1| let g:syntastic_check_on_wq = 0
-augroup END
+" *.md files are Markdown
+autocmd vimrc BufNewFile,BufReadPost *.md set filetype=markdown
+" All files in the Notes and Tumblr directories  are Markdown
+autocmd vimrc BufRead,BufNewfile ~/Dropbox/Notes/* set filetype=markdown
+autocmd vimrc BufRead,BufNewfile ~/.local/share/tumblr/* set filetype=markdown
+" All txt files in the Todo.txt directory are Todo.txt format
+autocmd vimrc BufRead,BufNewfile ~/Dropbox/todo/*.txt set filetype=todo
+" All files in the Taskpaper directory are Taskpaper
+autocmd vimrc BufRead,BufNewfile ~/Dropbox/Taskpaper/* set filetype=taskpaper
+" Fold ~/.vim/vimrc
+autocmd vimrc BufRead,BufNewfile ~/.vim/vimrc set foldmethod=marker
+" Set text width to 65 when writing mail in mutt
+autocmd vimrc FileType mail set tw=65
+" Apply Syntastic settings to relevant filetypes
+autocmd vimrc FileType markdown,python,vim,yaml set statusline+=%#warningmsg# |set statusline+=\ %{SyntasticStatuslineFlag()} |set statusline+=%* |let g:syntastic_always_populate_loc_list = 1 |let g:syntastic_auto_loc_list = 1| let g:syntastic_check_on_open = 1| let g:syntastic_check_on_wq = 0
 " }}}
 " User Interface {{{
 " Use comma instead of backslash as leader
-let mapleader=','
-let gmapleader=','
+let g:mapleader=','
+let g:gmapleader=','
 let maplocalleader=','
 " Hide buffers
 set hidden
@@ -154,10 +158,8 @@ set softtabstop=4
 set smarttab
 set expandtab
 " Make folds persistent
-augroup myFolding
-    au BufWinLeave *.* mkview
-    au BufWinEnter *.* silent loadview
-augroup END
+autocmd vimrc BufWinLeave *.* mkview
+autocmd vimrc BufWinEnter *.* silent loadview
 " Convert inline Markdown links to references with formd, and vice versa
 nmap <leader>fr :%! ~/bin/formd -r<CR>
 nmap <leader>fi :%! ~/bin/formd -i<CR>
@@ -180,7 +182,7 @@ set clipboard=unnamed
 " Toggle paste mode with F6
 set pastetoggle=<F6>
 " Always exit paste mode when leaving insert mode
-au InsertLeave * set nopaste
+autocmd vimrc InsertLeave * set nopaste
 " }}}
 " Search & Highlighting {{{
 " Use matchit
