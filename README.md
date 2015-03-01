@@ -30,3 +30,4 @@
 * [Tabular](https://github.com/godlygeek/tabular)
 * [Gruvbox](https://github.com/morhetz/gruvbox)
 * [Syntastic](https://github.com/scrooloose/syntastic) 
+* [Markdown Enhancements](https://github.com/mattly/vim-markdown-enhancements)
