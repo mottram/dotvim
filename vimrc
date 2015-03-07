@@ -32,7 +32,6 @@ Plug 'ap/vim-buftabline'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'morhetz/gruvbox'
-Plug 'nelstrom/vim-markdown-folding', { 'for': 'markdown' }
 Plug 'mattly/vim-markdown-enhancements', { 'for': 'markdown' }
 Plug 'scrooloose/syntastic', { 'for': [ 'markdown', 'python', 'vim', 'yaml' ] }
 call plug#end()
