@@ -146,6 +146,8 @@ let MRU_Max_Entries = 30
 nmap <leader>m :Mru<CR>
 " Markdown folding
 let g:markdown_fold_style = 'nested'
+" Open Buffergator at the top
+let g:buffergator_viewport_split_policy = 'T'
 " }}}
 " Text Editing & Formatting {{{
 " Indent automatically
